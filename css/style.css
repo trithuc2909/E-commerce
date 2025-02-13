@@ -1,0 +1,96 @@
+*{
+  box-sizing: border-box;  /* Không cho thuộc tính này phát sinh thêm không gian  */
+}
+.body {
+    color: #333;
+    font-style: normal;
+    font-size: 1.4rem;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.42857143;
+}
+.boxcenter {
+    width: 70%;
+    margin: 0 auto;
+}
+.row {
+    float: left;
+    width: 100%;
+}
+.mb {
+    margin-bottom: 20px;
+}
+.mr {
+    margin-right: 2%;
+}
+.demo {
+    background-color: #e31837;
+    min-height: 100px;
+}
+.header {
+    background-color: #e31837;
+    border: 1px #2b2b2b solid;
+    font-size: 1vw;  /*để co giãn theo website */
+    color: white;
+    border-radius: 5px;
+} 
+.header h1 {
+     margin: 10px 20px; /*trên dưới, trái phải */
+}
+.footer {
+    background-color: #e31837;
+    border: 1px #2b2b2b solid;
+    font-size: 0.8vw;  /*để co giãn theo website */
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+} 
+.menu {
+    background-color: #484848;
+    color: #fff;
+    border-radius: 5px;
+} 
+.boxtrai {
+    float: left;
+    width: 74%;
+}
+.boxphai {
+    float: left;
+    width: 24%;
+}
+.boxtieude {
+    color: #fff;
+    padding: 10px;
+    background-color: #484848;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.boxnoidung {
+    background-color: #CCC;
+    border-left: 1px #CCC solid #EEE;
+    border-right: 1px #CCC solid #EEE;
+    border-bottom: 1px #CCC solid #EEE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 200px;
+}
+.boxnoidung2 {
+    background-color: #CCC;
+    border-left: 1px #CCC solid #EEE;
+    border-right: 1px #CCC solid #EEE;
+    min-height: 200px;
+}
+.boxfooter {
+    color: #fff;
+    padding: 10px;
+    background-color: #484848;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.banner {
+    min-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+.banner img {
+    height: 300px;
+}
