@@ -1,10 +1,9 @@
 *{
+  
   box-sizing: border-box;  /* Không cho thuộc tính này phát sinh thêm không gian  */
 }
 .body {
-    color: #333;
     font-style: normal;
-    font-size: 1.4rem;
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.42857143;
 }
@@ -18,6 +17,9 @@
 }
 .mb {
     margin-bottom: 20px;
+}
+.mb10 {
+    margin-bottom: 10px;
 }
 .mr {
     margin-right: 2%;
@@ -72,6 +74,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     min-height: 200px;
+    padding: 20px;
 }
 .boxnoidung2 {
     background-color: #CCC;
@@ -87,10 +90,103 @@
     border-bottom-right-radius: 5px;
 }
 .banner {
+    margin-bottom: 20px;
     min-width: 300px;
     width: 100%;
     text-align: center;
 }
 .banner img {
+    border-radius: 5px;
+    width: 100%;
     height: 300px;
+}
+.boxsanpham {
+    border-radius: 5px;
+    float: left;
+    width: 32%;
+    min-height: 300px;
+    border: 1px #484848 solid;
+    margin-bottom: 20px;
+}
+.boxsanpham .img{
+    margin-top: 10px;
+    min-height: 230px;
+    text-align: center;
+}
+.img img {
+    height: 220px;
+}
+.boxsanpham a {
+    color: #484848;
+    text-decoration: none;
+    padding-left: 13px;
+}
+.boxsanpham p{
+    color: #e31837;
+    padding-left: 13px;
+}
+.menu ul{
+    padding: 0px 15px;
+}
+.menu ul li{
+    cursor: pointer;
+    list-style-type: none;
+    display: inline;
+    padding: 0px 15px;
+}
+.menu ul li a{
+    color: white;
+    font-size: 1vw;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.menu ul li a:hover{
+    color: #e31837;
+    font-size: 1.2vw;
+}
+
+/* box tài khoản */
+
+.formtaikhoan {
+    line-height: 150%;
+}
+
+.formtaikhoan a{
+    text-decoration: none;
+}
+
+.formtaikhoan a:hover{
+    text-decoration: underline;
+}
+
+.formtaikhoan input[type = "text"]{
+    width: 100%;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.formtaikhoan input[type="password"]{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px #CCC solid;
+}
+
+.formtaikhoan input[type="checkbox"]{
+    border-radius: 5px;
+}
+
+.formtaikhoan input[type="submit"] {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #e31837;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.formtaikhoan input[type="submit"]:hover {
+    background-color: #8e081c;
 }
