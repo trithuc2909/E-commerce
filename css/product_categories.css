@@ -68,7 +68,6 @@
 }
 
 .form_tieude {
-    line-height: 10px;
     background-color: #e31837;
     color: #FFFFFF;
     border: 1px #252836 solid;
@@ -100,7 +99,47 @@
 
 .form_noidung input[type="submit"]:hover, 
 .form_noidung input[type="reset"]:hover,
-.form_noidung input[type="button"]:hover {
+.form_noidung input[type="button"]:hover,
+.form_dsloai input[type="checkbox"]:hover {
     background-color: #666666;
     cursor: pointer;
+}
+
+
+/* === form danh sách loại === */
+
+.form_dsloai table{
+    width: 100%;
+    border-collapse: collapse; /* Để bỏ các khoản cách giữa các cột */
+    border: 1px #1E1E2E solid;
+}
+
+.form_dsloai table th:nth-child(1) {
+    width: 10%;
+    padding: 20px;
+    background-color: #484848;
+    color: #fff;
+}
+
+.form_dsloai table th:nth-child(2) {  /*Tổng 4 child là 100% */
+    width: 30%;
+    background-color: #484848;
+    color: #fff;
+}
+.form_dsloai table th:nth-child(3) {
+    width: 40%;
+    background-color: #484848;
+    color: #fff;
+}
+.form_dsloai table th:nth-child(4) {
+    width: 20%;
+    background-color: #484848;
+    color: #fff;
+}
+
+/* === .form_dsloai td === */
+
+.form_dsloai table td{
+    padding: 10px 20px;
+    border: 1px #CCC solid;
 }
