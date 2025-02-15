@@ -80,7 +80,8 @@
     background-color: #CCC;
     border-left: 1px #CCC solid #EEE;
     border-right: 1px #CCC solid #EEE;
-    min-height: 200px;
+    min-height: 215px;
+    background-color: #CCC;
 }
 .boxfooter {
     color: #fff;
@@ -88,6 +89,7 @@
     background-color: #484848;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
 }
 .banner {
     margin-bottom: 20px;
@@ -148,7 +150,7 @@
 /* box tài khoản */
 
 .formtaikhoan {
-    line-height: 150%;
+    line-height: 125%;
 }
 
 .formtaikhoan a{
@@ -189,4 +191,59 @@
 
 .formtaikhoan input[type="submit"]:hover {
     background-color: #8e081c;
+}
+
+/* === menu dọc === */
+.menu_doc ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none; /* Bỏ đi dấu chấm thẻ <li> */
+}
+
+.menu_doc ul li{
+    padding: 12px 20px;
+    border-top: 1px  #484848 solid;
+}
+
+.menu_doc ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu_doc ul li:hover {
+    background-color: #EEE;
+    transition: 0.8s;
+}
+
+.menu_doc ul li a:hover {
+    color: #FF4500;
+}
+
+/* === search box === */
+
+.searchbox input[type = "text"] {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+}
+
+/* === top10 yêu thích  */
+.top10 img{
+    width: 20%;
+    height: 44px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.top10 a {
+    text-decoration: none;
+    color: #000000;
+    transition: color 0.3s ease-in-out;
+}
+
+.top10 a:hover {
+    text-decoration: underline;
+    color: #FF4500;
 }
