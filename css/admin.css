@@ -104,3 +104,39 @@
     background-color: #666666;
     cursor: pointer;
 }
+
+/* === form danh sách loại === */
+.form_dsloai table{
+    width: 100%;
+    border-collapse: collapse; /* Để bỏ các khoản cách giữa các cột */
+    border: 1px #1E1E2E solid;
+}
+
+.form_dsloai table th {
+    padding: 20px;
+    background-color: #484848;
+    color: #fff;
+}
+/*
+.form_dsloai table th:nth-child(2) { 
+    width: 30%;
+    background-color: #484848;
+    color: #fff;
+}
+.form_dsloai table th:nth-child(3) {
+    width: 40%;
+    background-color: #484848;
+    color: #fff;
+}
+.form_dsloai table th:nth-child(4) {
+    width: 20%;
+    background-color: #484848;
+    color: #fff;
+} */
+
+/* === .form_dsloai td === */
+
+.form_dsloai table td{
+    padding: 10px 20px;
+    border: 1px #CCC solid;
+}
