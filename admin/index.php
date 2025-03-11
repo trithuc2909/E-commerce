@@ -72,44 +72,63 @@
 
 
 
-
             // Controller Sản phẩm
             case 'addsp':
-                //Kiểm tra xem người dùng có click vào nút thêm mới hay không
                 if (isset($_POST["themmoi"])) {
-                    $tensp = trim($_POST["tensp"]); // Lấy dữ liệu & xóa khoảng trắng
+                    $iddanhmuc = trim($_POST["iddanhmuc"]);
+                    $tensp = trim($_POST["tensp"]);
                     $giasp = trim($_POST["giasp"]);
                     $mota = trim($_POST["mota"]);
-                    $filename=$_FILES["hinhanh"]["name"]; // Lấy tên file
-                    $target_dir = "upload/";
+                    $hinhanh = $_FILES["hinhanh"]["name"];
+            
+                    // Kiểm tra & xử lý upload file
+                    $target_dir = "../upload/";
                     $target_file = $target_dir . basename($_FILES["hinhanh"]["name"]);
                     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], $target_file)) {
-                        //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                        echo "File " . htmlspecialchars(basename($_FILES["hinhanh"]["name"])) . " đã được tải lên.";
                     } else {
-                        //echo "Sorry, there was an error uploading your file.";
+                        echo "Xin lỗi, có lỗi khi tải file lên.";
                     }
-
-                    if (!empty($tenloai)) { 
-                        $sql_check = "SELECT COUNT(*) FROM sanpham WHERE name = '$tenloai'";
-                        $count = pdo_query_value($sql_check); // Lấy số lượng kết quả
-    
+            
+                    if (!empty($tensp)) { 
+                        // Kiểm tra xem sản phẩm đã tồn tại chưa
+                        $sql_check = "SELECT COUNT(*) FROM sanpham WHERE name = :name";
+                        $count = pdo_query_value($sql_check, [':name' => $tensp]);
+            
                         if ($count > 0) {
-                            // Nếu tên loại đã tồn tại
-                            $thong_bao = "<p style='color: red;'>Tên loại đã tồn tại!</p>";
+                            $thong_bao = "<p style='color: red;'>Tên sản phẩm đã tồn tại!</p>";
                         } else {
-                            // Nếu tên loại chưa tồn tại, thêm vào CSDL
-                            insert_sanpham($tensp, $giasp,$filename, $mota);
-                            $thong_bao = "<p style='color: green;'>Thêm mới thành công</p>";
+                            // Chuyển giá tiền về số
+                            $giasp = str_replace(',', '', $giasp);
+                            $giasp = (float) $giasp;
+            
+                            // Kiểm tra nếu giá trị hợp lệ
+                            if ($giasp <= 0) {
+                                $thong_bao = "<p style='color: red;'>Giá sản phẩm không hợp lệ!</p>";
+                            } else {
+                                // Thêm sản phẩm vào database
+                                insert_sanpham($tensp, $giasp, $hinhanh, $mota, $iddanhmuc);
+                                $thong_bao = "<p style='color: green;'>Thêm mới thành công</p>";
+                            }
                         }
                     } else {
-                        $thong_bao = "<p style='color: red;'>Vui lòng nhập tên loại</p>";
+                        $thong_bao = "<p style='color: red;'>Vui lòng nhập tên sản phẩm</p>";
                     }
                 }
+            
                 $list_danhmuc = loadAll_danhmuc(); 
                 include "sanpham/add.php";
                 break;
             case 'listsp':
-                $list_sanpham = loadAll_sanpham(); // Gọi hàm loadAll_sanpham() để lấy danh sách loại sản phẩm
+                if (isset($_POST['listok'])&&($_POST['listok'])) {
+                    $keyword = $_POST["keyword"];
+                    $iddanhmuc = $_POST["iddanhmuc"];
+                } else {
+                    $keyword = '';
+                    $iddanhmuc = 0;
+                }
+                $list_danhmuc = loadAll_danhmuc(); 
+                $list_sanpham = loadAll_sanpham($keyword,$iddanhmuc); // Gọi hàm loadAll_sanpham() để lấy danh sách loại sản phẩm
 
                 include "sanpham/list.php";
                 break;

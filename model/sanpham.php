@@ -1,8 +1,15 @@
 <?php
     // Hàm thêm mới loại hàng hóa
-    function insert_sanpham ($tenloai){
-        $sql = "INSERT INTO sanpham(name) VALUES ('$tenloai')";
-        pdo_execute($sql);
+    function insert_sanpham($tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {
+        $sql = "INSERT INTO sanpham (name, price, img, description, iddanhmuc) 
+                VALUES (:name, :price, :img, :description, :iddanhmuc)";
+        pdo_execute($sql, [
+            ':name' => $tensp,
+            ':price' => (float)$giasp,
+            ':img' => $hinhanh,
+            ':description' => $mota,
+            ':iddanhmuc' => $iddanhmuc
+        ]);
     }
     // Hàm xóa loại hàng hóa
     function delete_sanpham($id) {
@@ -10,8 +17,15 @@
         pdo_execute($sql);
     }
     // Hàm load danh sách loại hàng hóa
-    function loadAll_sanpham(){
-        $sql = "SELECT * FROM sanpham ORDER BY id desc";    
+    function loadAll_sanpham($keyword,$iddanhmuc){
+        $sql = "SELECT * FROM sanpham WHERE 1";
+        if ($keyword !="") {
+            $sql .= " AND name = '" .$keyword."'";
+        }
+        if ($iddanhmuc > 0) {
+            $sql .= " AND iddanhmuc LIKE '%".$iddanhmuc."%'";
+        }
+        $sql .=" ORDER BY id desc";    // Nối chuỗi trong sql { sql.= " chuỗi"}
         $list_sanpham = pdo_query($sql);
 
         return $list_sanpham;

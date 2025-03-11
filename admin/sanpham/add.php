@@ -3,14 +3,14 @@
         <h1>THÊM MỚI SẢN PHẨM </h1>
     </div>    
     <div class="row form_noidung">
-        <form action="index.php?act=addsp" method="post" encytype="multipart/form-data"> <!-- enctype="multipart/form-data" để upload file -->
+        <form action="index.php?act=addsp" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" để upload file -->
             <div class="row mb10">
                 Danh mục<br>
-                <select name="iddm" >
+                <select name="iddanhmuc" >
                     <?php
                         foreach ($list_danhmuc as $danhmuc) {
                             extract($danhmuc);
-                            echo "<option value='$id'>$name</option>";
+                            echo '<option value="'.$id.'">'.$name.'</option>';
                         }
                     ?>
                 </select>

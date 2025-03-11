@@ -19,17 +19,14 @@ function pdo_get_connection(){
  */
 
 //  Hàm thực thi câu sql
-function pdo_execute($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
+function pdo_execute($sql, $params = []) {
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
+        $stmt->execute($params);
+    } catch(PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -86,19 +83,16 @@ function pdo_query_one($sql){
  * @return giá trị
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_value($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
+function pdo_query_value($sql, $params = []) {
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+        $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return array_values($row)[0];
-    }
-    catch(PDOException $e){
+    } catch(PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
