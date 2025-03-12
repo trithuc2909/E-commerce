@@ -93,7 +93,7 @@
                     if (!empty($tensp)) { 
                         // Kiểm tra xem sản phẩm đã tồn tại chưa
                         $sql_check = "SELECT COUNT(*) FROM sanpham WHERE name = :name";
-                        $count = pdo_query_value($sql_check, [':name' => $tensp]);
+                        $count = pdo_query_value($sql_check, [':name' => $tensp]); // Lấy số lượng kết quả
             
                         if ($count > 0) {
                             $thong_bao = "<p style='color: red;'>Tên sản phẩm đã tồn tại!</p>";
@@ -137,7 +137,7 @@
                     delete_sanpham($_GET["id"]);
                 }
                 //Sau khi xóa xong thì gọi lại trang list.php để hiển thị danh sách mới
-                $list_sanpham = loadAll_sanpham(); 
+                $list_sanpham = loadAll_sanpham("", 0); 
 
                 include "sanpham/list.php";
                 break;
@@ -145,21 +145,36 @@
                 if(isset($_GET["id"]) && ($_GET["id"] > 0)){
                     $sanpham = loadOne_sanpham($_GET["id"]);
                 }
+                $list_danhmuc = loadAll_danhmuc(); 
                 include "sanpham/update.php";
                 break;
-            case 'updatesp':
-                if (isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    $tenloai = ($_POST["tenloai"]);
+            case 'updatesp':    
+                if (isset($_POST['capnhat']) && $_POST['capnhat']) {
                     $id = $_POST["id"];
-                    if (!empty($tenloai)) {
-                        update_sanpham($id, $tenloai);
+                    $tensp = $_POST["tensp"];
+                    $giasp = $_POST["giasp"];
+                    $mota = $_POST["mota"]; // Lấy giá trị mô tả
+                    $hinhanh = $_FILES["hinhanh"]["name"];
+            
+                    // Kiểm tra & xử lý upload file
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["hinhanh"]["name"]);
+                    if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], $target_file)) {
+                        echo "File " . htmlspecialchars(basename($_FILES["hinhanh"]["name"])) . " đã được tải lên.";
+                    } else {
+                        echo "Xin lỗi, có lỗi khi tải file lên.";
+                    }
+            
+                    if (!empty($tensp)) {
+                        update_sanpham($id, $tensp, $giasp, $mota, $hinhanh);
                         $thong_bao = "<p style='color: green;'>Cập nhật thành công</p>";
                     } else {
-                        $thong_bao = "<p style='color: red;'>Vui lòng nhập tên loại</p>";
+                        $thong_bao = "<p style='color: red;'>Vui lòng nhập tên sản phẩm</p>";
                     }
-                }     
+                }
+                
                 //Sau khi update xong thì gọi lại trang list.php để hiển thị danh sách mới
-                $list_sanpham = loadAll_sanpham(); 
+                $list_sanpham = loadAll_sanpham("", 0); 
                 include "sanpham/list.php";
                 break;    
 

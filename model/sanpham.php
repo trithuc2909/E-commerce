@@ -33,13 +33,18 @@
     // Hàm lấy thông tin loại hàng hóa
     function loadOne_sanpham($id){
         $sql = "SELECT * FROM sanpham WHERE id = " .$id;
-        $danhmuc = pdo_query_one($sql);
+        $sanpham = pdo_query_one($sql);
         
-        return $danhmuc;
+        return $sanpham;
     }
     // Hàm cập nhật loại hàng hóa
-    function update_sanpham($id, $tenloai){
-        $sql = "UPDATE sanpham SET name ='".$tenloai."' WHERE id =" .$id;
-        pdo_execute($sql);
-    }   
+    function update_sanpham($id, $tensp, $giasp, $mota, $hinhanh){
+        $sql = "UPDATE sanpham SET name = :name, price = :price, description = :description WHERE id = :id";
+        pdo_execute($sql, [
+            ':name' => $tensp,
+            ':price' => (float)$giasp,
+            ':description' => $mota,
+            ':id' => $id
+        ]);
+    }
 ?>

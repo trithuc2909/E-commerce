@@ -1,7 +1,24 @@
 <?php
-    if (is_array($danhmuc)){
-        extract($danhmuc); // Chuyển mảng thành các biến
+    if (is_array($sanpham)){
+        extract($sanpham); // Chuyển mảng thành các biến
     }
+    $hinhanhpath = "../upload/" .$img; // Đường dẫn hình ảnh
+        if (is_file($hinhanhpath)) {
+            $hinhanh = "<img src='".$hinhanhpath."' height='80'>";
+        } else {
+            $hinhanh = "Không có hình ảnh";
+        }
+                
+    $mota = ""; // Khởi tạo biến mô tả
+    $id = isset($_GET["id"]) ? (int)$_GET["id"] : 0; // Kiểm tra id có tồn tại trong url không?
+
+    if ($id > 0) {
+        $sanpham = loadOne_sanpham($id);
+        if (is_array($sanpham) && !empty($sanpham)) {
+            extract($sanpham); // Chuyển mảng thành các biến
+            $mota = isset($sanpham["description"]) ? $sanpham["description"] : "";
+        }
+    }        
 ?>
 <div class="row">
     <div class="row form_tieude">
@@ -9,31 +26,43 @@
     </div>    
     <div class="row form_noidung">
     <form action="index.php?act=updatesp" method="post" encytype="multipart/form-data"> <!-- enctype="multipart/form-data" để upload file -->
+ 
             <div class="row mb10">
-                Mã sản phẩm<br>
-                <input type="text" name="masp">
+                <select name="iddanhmuc">
+                        <option value="0" selected>Tất cả</option>
+                        <?php
+                            foreach ($list_danhmuc as $danhmuc) {
+                                extract($danhmuc);
+                                if ($iddanhmuc == $id) {
+                                    echo '<option value="'.$id.'" selected>'.$name.'</option>';
+                                } else {
+                                    echo '<option value="'.$id.'">'.$name.'</option>';
+                                }
+                                
+                            }
+                        ?>
+                </select>
             </div>
             <div class="row mb10">
                 Tên sản phẩm<br>
-                <input type="text" name="tensp" autocomplete="off"> 
+                <input type="text" name="tensp"  value="<?=$name?>"> 
             </div>
             <div class="row mb10">
                 Giá<br>
-                <input type="text" name="giasp" autocomplete="off">
+                <input type="text" name="giasp"  value="<?php echo $price;?>">
             </div>
             <div class="row mb10">
                 Hình ảnh<br>
-                <input type="file" name="hinhanh" id="">
+                <input type="file" name="hinhanh">
+                <?=$hinhanh?>
             </div>
             <div class="row mb10">
                 Mô tả<br>
-                <textarea name="mota" cols="30" rows="10"></textarea>
+                <textarea name="mota" cols="30" rows="10"><?= isset($mota) ? htmlspecialchars($mota) : "" ?></textarea>
+
             </div>
             <div class="row mb10">
-                Lượt xem<br>
-                <input type="text" name="tensp" autocomplete="off">
-            </div>
-            <div class="row mb10">
+                <input type="hidden" name="id" value="<?=$id?>">  <!-- Để lưu id sản phẩm -->
                 <input type="submit" name="capnhat" value="Cập nhật">
                 <input type="reset" value="Nhập lại">
                 <a href="index.php?act=listsp"> <input type="button" value="Danh sách"></a>
