@@ -26,16 +26,13 @@ function pdo_execute($sql, $params = []) {
 
         // Debug: Kiểm tra số dòng bị cập nhật
         $rows_affected = $stmt->rowCount();
-        echo "Số dòng bị ảnh hưởng: " . $rows_affected;
-
+        
     } catch(PDOException $e) {
         echo "Lỗi SQL: " . $e->getMessage();
     } finally {
         unset($conn);
     }
 }
-
-
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql

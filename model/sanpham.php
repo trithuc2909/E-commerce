@@ -5,7 +5,7 @@ function insert_sanpham($tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {
             VALUES (:name, :price, :img, :description, :iddanhmuc)";
     pdo_execute($sql, [
         ':name' => $tensp,
-        ':price' => (float)$giasp,
+        ':price' => $giasp,
         ':img' => $hinhanh,
         ':description' => $mota,
         ':iddanhmuc' => $iddanhmuc
@@ -30,7 +30,7 @@ function loadAll_sanpham($keyword, $iddanhmuc){
         $sql .= " AND iddanhmuc = :iddanhmuc";
         $params[':iddanhmuc'] = $iddanhmuc;
     }
-    $sql .= " ORDER BY id DESC";
+    $sql .= " ORDER BY id ASC";
     $list_sanpham = pdo_query($sql, $params);
 
     return $list_sanpham;
@@ -44,9 +44,25 @@ function loadOne_sanpham($id){
     return $sanpham;
 }
 
-// Hàm cập nhật loại hàng hóa
+//Hàm cập nhật loại hàng hóa
 function update_sanpham($id, $tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {
     try {
+        $id = (int)$id;
+        $iddanhmuc = (int)$iddanhmuc;
+
+        if ($id <= 0) {
+            throw new Exception("ID sản phẩm không hợp lệ!");
+        }
+
+        // Kiểm tra danh mục có tồn tại không
+        $check_sql = "SELECT id FROM danhmuc WHERE id = :iddanhmuc";
+        $check = pdo_query_one($check_sql, [':iddanhmuc' => $iddanhmuc]);
+
+        if (!$check) {
+            throw new Exception("Danh mục không tồn tại!");
+        }
+
+        // Tạo danh sách tham số
         $params = [
             ':id' => $id,
             ':name' => $tensp,
@@ -55,23 +71,25 @@ function update_sanpham($id, $tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {
             ':iddanhmuc' => $iddanhmuc
         ];
 
+        // Nếu có hình ảnh mới thì cập nhật
         if (!empty($hinhanh)) {
-            $sql = "UPDATE sanpham SET name = :name, price = :price, img = :img, description = :description, iddanhmuc = :iddanhmuc WHERE id = :id";
+            $sql = "UPDATE sanpham 
+                    SET name = :name, price = :price, img = :img, description = :description, iddanhmuc = :iddanhmuc 
+                    WHERE id = :id";
             $params[':img'] = $hinhanh;
         } else {
-            $sql = "UPDATE sanpham SET name = :name, price = :price, description = :description, iddanhmuc = :iddanhmuc WHERE id = :id";
+            $sql = "UPDATE sanpham 
+                    SET name = :name, price = :price, description = :description, iddanhmuc = :iddanhmuc 
+                    WHERE id = :id";
         }
 
-        // Debug: Kiểm tra câu SQL và tham số
-        echo "<pre>";
-        echo "SQL: " . $sql . "\n";
-        print_r($params);
-        echo "</pre>";
+        // Debug log
+        error_log("Cập nhật sản phẩm: " . json_encode($params));
 
         pdo_execute($sql, $params);
-
-    } catch (PDOException $e) {
-        echo "Lỗi cập nhật: " . $e->getMessage();
+    } catch (Exception $e) {
+        error_log("Lỗi cập nhật sản phẩm: " . $e->getMessage());
+        throw $e;
     }
 }
 
