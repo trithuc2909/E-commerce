@@ -1,68 +1,64 @@
 <?php
-    if (is_array($sanpham)){
-        extract($sanpham); // Chuyển mảng thành các biến
-    }
-    $hinhanhpath = "../upload/" .$img; // Đường dẫn hình ảnh
-        if (is_file($hinhanhpath)) {
-            $hinhanh = "<img src='".$hinhanhpath."' height='80'>";
-        } else {
-            $hinhanh = "Không có hình ảnh";
-        }
-                
-    $mota = ""; // Khởi tạo biến mô tả
-    $id = isset($_GET["id"]) ? (int)$_GET["id"] : 0; // Kiểm tra id có tồn tại trong url không?
+if (is_array($sanpham)){
+    extract($sanpham); // Chuyển mảng thành các biến
+}
+$hinhanhpath = "../upload/" . $img; // Đường dẫn hình ảnh
+if (is_file($hinhanhpath)) {
+    $hinhanh = "<img src='".$hinhanhpath."' height='80'>";
+} else {
+    $hinhanh = "Không có hình ảnh";
+}
+$mota = ""; // Khởi tạo biến mô tả
 
-    if ($id > 0) {
-        $sanpham = loadOne_sanpham($id);
-        if (is_array($sanpham) && !empty($sanpham)) {
-            extract($sanpham); // Chuyển mảng thành các biến
-            $mota = isset($sanpham["description"]) ? $sanpham["description"] : "";
-        }
-    }        
+if ($id > 0) {
+    $sanpham = loadOne_sanpham($id);
+    if (is_array($sanpham) && !empty($sanpham)) {
+        extract($sanpham); // Chuyển mảng thành các biến
+        $mota = isset($sanpham["description"]) ? $sanpham["description"] : "";
+    }
+}
 ?>
 <div class="row">
     <div class="row form_tieude">
         <h1>CẬP NHẬT LOẠI HÀNG HÓA </h1>
     </div>    
     <div class="row form_noidung">
-    <form action="index.php?act=updatesp" method="post" encytype="multipart/form-data"> <!-- enctype="multipart/form-data" để upload file -->
- 
+        <form action="index.php?act=updatesp" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" để upload file -->
             <div class="row mb10">
                 <select name="iddanhmuc">
-                        <option value="0" selected>Tất cả</option>
-                        <?php
-                            foreach ($list_danhmuc as $danhmuc) {
-                                extract($danhmuc);
-                                if ($iddanhmuc == $id) {
-                                    echo '<option value="'.$id.'" selected>'.$name.'</option>';
-                                } else {
-                                    echo '<option value="'.$id.'">'.$name.'</option>';
-                                }
-                                
+                    <option value="0" selected>Tất cả</option>
+                    <?php
+                        foreach ($list_danhmuc as $danhmuc) { // Dùng danh sách danh mục
+                            extract($danhmuc); 
+                            if (isset($sanpham['iddanhmuc']) && $sanpham['iddanhmuc'] == $id) {
+                                echo '<option value="'.$id.'" selected>'.$name.'</option>';
+                            } else {
+                                echo '<option value="'.$id.'">'.$name.'</option>';
                             }
-                        ?>
-                </select>
+                        }
+                    ?>
+                </select>   
             </div>
             <div class="row mb10">
                 Tên sản phẩm<br>
-                <input type="text" name="tensp"  value="<?=$name?>"> 
+                <input type="text" name="tensp" value="<?= isset($sanpham['name']) ? htmlspecialchars($sanpham['name']) : '' ?>">
             </div>
             <div class="row mb10">
                 Giá<br>
-                <input type="text" name="giasp"  value="<?php echo $price;?>">
+                <input type="text" name="giasp" value="<?= isset($sanpham['price']) ? htmlspecialchars($sanpham['price']) : '' ?>">
             </div>
             <div class="row mb10">
                 Hình ảnh<br>
                 <input type="file" name="hinhanh">
-                <?=$hinhanh?>
+                <?= $hinhanh ?>
             </div>
             <div class="row mb10">
                 Mô tả<br>
                 <textarea name="mota" cols="30" rows="10"><?= isset($mota) ? htmlspecialchars($mota) : "" ?></textarea>
-
             </div>
             <div class="row mb10">
-                <input type="hidden" name="id" value="<?=$id?>">  <!-- Để lưu id sản phẩm -->
+                <input type="hidden" name="id" value="<?= $id ?>">  <!-- Để lưu id sản phẩm -->
+                <input type="text" name="tensp" value="<?= $sp['name'] ?>">
                 <input type="submit" name="capnhat" value="Cập nhật">
                 <input type="reset" value="Nhập lại">
                 <a href="index.php?act=listsp"> <input type="button" value="Danh sách"></a>
@@ -70,7 +66,7 @@
 
             <!-- === Thông báo === -->
             <?php
-                if(isset($thong_bao) ){
+                if (isset($thong_bao)) {
                     echo $thong_bao;
                 }
             ?>

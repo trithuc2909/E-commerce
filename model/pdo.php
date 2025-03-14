@@ -11,76 +11,78 @@ function pdo_get_connection(){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
+
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
  * @param string $sql câu lệnh sql
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql
  * @throws PDOException lỗi thực thi câu lệnh
  */
-
-//  Hàm thực thi câu sql
 function pdo_execute($sql, $params = []) {
     try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($params);
+
+        // Debug: Kiểm tra số dòng bị cập nhật
+        $rows_affected = $stmt->rowCount();
+        echo "Số dòng bị ảnh hưởng: " . $rows_affected;
+
+    } catch(PDOException $e) {
+        echo "Lỗi SQL: " . $e->getMessage();
+    } finally {
+        unset($conn);
+    }
+}
+
+
+/**
+ * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
+ * @param string $sql câu lệnh sql
+ * @param array $params mảng giá trị cung cấp cho các tham số của $sql
+ * @return array mảng các bản ghi
+ * @throws PDOException lỗi thực thi câu lệnh
+ */
+function pdo_query($sql, $params = []) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // Lấy tất cả các bản ghi
+        return $rows;
     } catch(PDOException $e) {
         throw $e;
     } finally {
         unset($conn);
     }
 }
-/**
- * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
- * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return array mảng các bản ghi
- * @throws PDOException lỗi thực thi câu lệnh
- */
-function pdo_query($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll(); // Lấy tất cả các bản ghi
-        return $rows;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
+
 /**
  * Thực thi câu lệnh sql truy vấn một bản ghi
  * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return array mảng chứa bản ghi
+ * @param array $params mảng giá trị cung cấp cho các tham số của $sql
+ * @return array mảng chứa bản ghi hoặc false nếu không tìm thấy
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_one($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
+function pdo_query_one($sql, $params = []) {
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+        $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row;
-    }
-    catch(PDOException $e){
+        return $row ? $row : false;
+    } catch(PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
+
 /**
  * Thực thi câu lệnh sql truy vấn một giá trị
  * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return giá trị
+ * @param array $params mảng giá trị cung cấp cho các tham số của $sql
+ * @return giá trị hoặc null nếu không tìm thấy
  * @throws PDOException lỗi thực thi câu lệnh
  */
 function pdo_query_value($sql, $params = []) {
@@ -89,7 +91,7 @@ function pdo_query_value($sql, $params = []) {
         $stmt = $conn->prepare($sql);
         $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return array_values($row)[0];
+        return $row ? array_values($row)[0] : null;
     } catch(PDOException $e) {
         throw $e;
     } finally {
