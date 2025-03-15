@@ -1,75 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce</title>
-    <link rel="stylesheet" href="../view/css/style.css">
-</head>
-<body>
-    <div class="boxcenter">
-        <div class="row mb header">
-            <h1>THUCFOOD ONLINE SUPERMARKET</h1>
-        </div>
-        <div class="row mb menu">
-            <ul>
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li>
-                <li><a href="#">Góp ý</a></li>
-                <li><a href="#">Hỏi đáp</a></li>
-            </ul>
-        </div>
-        <div class="row mb">
+<div class="row mb">
             <div class="boxtrai mr">
                 <div class="row">
                     <div class="banner">
-                        <img src="/Image/banner.png" alt="">   
+                    <!-- Slideshow container -->
+                        <div class="slideshow-container">
+
+                        <!-- Full-width images with number and caption text -->
+                        <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="view/Images/banner.png" style="width:100%">
+                        <div class="text">Caption Text</div>
+                        </div>
+
+                        <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="view/Images/banner2.png" style="width:100%">
+                        <div class="text">Caption Two</div>
+                        </div>
+
+                        <div class="mySlides fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img src="view/Images/banner3.png" style="width:100%">
+                        <div class="text">Caption Three</div>
+                        </div>
+
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        <br>
+
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        </div>     
                     </div>
                 </div>
                 <div class="row">
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr1.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr1.png" alt=""></div> 
                         <p>35.000 VNĐ</p>
                         <a href="#">GÀ RÁN</a>
                     </div>
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr2.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr2.png" alt=""></div> 
                         <p>90.000 VNĐ</p>
                         <a href="#"> PIZZA </a>
                     </div>
                     <div class="boxsanpham">
-                        <div class="row img"><img src="/Image/pr3.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr3.png" alt=""></div> 
                         <p>56.000 VNĐ</p>
                         <a href="#">HAMBURGER</a>
                     </div>
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr4.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr4.png" alt=""></div> 
                         <p>15.000 VNĐ</p>
                         <a href="#">KHOAI TÂY CHIÊN</a>
                     </div>
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr5.jpg" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr5.jpg" alt=""></div> 
                         <p>10.000 VNĐ</p>
                         <a href="#">COCACOLA</a>
                     </div>
                     <div class="boxsanpham">
-                        <div class="row img"><img src="/Image/pr6.jpg" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr6.jpg" alt=""></div> 
                         <p>45.000 VNĐ</p>
                         <a href="#">MÌ Ý</a>
                     </div>
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr7.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr7.png" alt=""></div> 
                         <p>40.000 VNĐ</p>
                         <a href="#">HÁ CẢO</a>
                     </div>
                     <div class="boxsanpham mr">
-                        <div class="row img"><img src="/Image/pr8.jpg" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr8.jpg" alt=""></div> 
                         <p>35.000 VNĐ</p>
                         <a href="#">GÀ SỐT CAY</a>
                     </div>
                     <div class="boxsanpham">
-                        <div class="row img"><img src="/Image/pr9.png" alt=""></div> 
+                        <div class="row img"><img src="view/Images/pr9.png" alt=""></div> 
                         <p>15.000 VNĐ</p>
                         <a href="#">KEM</a>
                     </div>
@@ -134,43 +145,43 @@
                     <div class="boxtieude">TOP 10 YÊU THÍCH</div>
                     <div class="boxnoidung row">
                         <div class="row mb10 top10">
-                            <img src="/Image/fav1.png" alt=""> 
+                            <img src="view/Images/fav1.png" alt=""> 
                             <a href="">Gà rán giòn cay</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav2.png" alt=""> 
+                            <img src="view/Images/fav2.png" alt=""> 
                             <a href="">Gà sốt phô mai</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav3.png" alt=""> 
+                            <img src="view/Images/fav3.png" alt=""> 
                             <a href="">Burger bò phô mai</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav4.png" alt=""> 
+                            <img src="view/Images/fav4.png" alt=""> 
                             <a href="">Burger gà giòn</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav5.png" alt=""> 
+                            <img src="view/Images/fav5.png" alt=""> 
                             <a href="">Pizza phô mai</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav6.png" alt=""> 
+                            <img src="view/Images/fav6.png" alt=""> 
                             <a href="">Pizza hải sản</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav7.png" alt=""> 
+                            <img src="..view/Images/fav7.png" alt=""> 
                             <a href="">Mì Ý sốt bò bằm</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav8.png" alt=""> 
+                            <img src="view/Images/fav8.png" alt=""> 
                             <a href="">Mì Ý sốt kem (Carbonara)</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav9.png" alt=""> 
+                            <img src="view/Images/fav9.png" alt=""> 
                             <a href="">Khoai tây chiên</a>
                         </div>
                         <div class="row mb10 top10">
-                            <img src="/Image/fav10.png" alt=""> 
+                            <img src="view/Images/fav10.png" alt=""> 
                             <a href="">Gà nướng mật ong</a>
                         </div>
                     </div>
@@ -178,10 +189,3 @@
                 
             </div>
         </div>
-        <div class="row mb footer">
-            © 2025 E-commerce | Trí Thức
-        </div>
-    </div>
-</body>
-</html>
-
