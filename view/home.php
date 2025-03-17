@@ -9,19 +9,19 @@
                         <div class="mySlides fade">
                         <div class="numbertext">1 / 3</div>
                         <img src="view/Images/banner.png" style="width:100%">
-                        <div class="text">Caption Text</div>
+                        <!-- <div class="text">Caption Text</div> -->
                         </div>
 
                         <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
                         <img src="view/Images/banner2.png" style="width:100%">
-                        <div class="text">Caption Two</div>
+                        <!-- <div class="text">Caption Two</div> -->
                         </div>
 
                         <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
                         <img src="view/Images/banner3.png" style="width:100%">
-                        <div class="text">Caption Three</div>
+                        <!-- <div class="text">Caption Three</div> -->
                         </div>
 
                         <!-- Next and previous buttons -->
@@ -39,7 +39,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="boxsanpham mr">
+
+                    <?php
+                        $i=0;
+                        foreach ($san_pham_moi as $sanpham) {
+                            extract($sanpham);
+                            $hinhanh = $img_path.$img; // $img_path = upload/ && $img = tên hình ảnh
+
+                            if (($i == 2) || ($i == 5) || ($i == 8)) {
+                                $mr = "";
+                            } else {
+                                $mr = "mr";
+                            }
+
+                            echo '<div class="boxsanpham '.$mr.'">
+                                    <div class="row img"><img src="'.$hinhanh.'" alt=""></div> 
+                                    <p>'.$price.'</p>
+                                    <a href="#">'.$name.'</a>
+                                </div>';
+                                $i+= 1;
+                        }
+                    ?>
+                    <!-- <div class="boxsanpham mr">
                         <div class="row img"><img src="view/Images/pr1.png" alt=""></div> 
                         <p>35.000 VNĐ</p>
                         <a href="#">GÀ RÁN</a>
@@ -83,7 +104,7 @@
                         <div class="row img"><img src="view/Images/pr9.png" alt=""></div> 
                         <p>15.000 VNĐ</p>
                         <a href="#">KEM</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="boxphai">
