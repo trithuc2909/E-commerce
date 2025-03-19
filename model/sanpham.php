@@ -26,6 +26,14 @@ function loadAll_sanpham_home(){
     return $list_sanpham;
 }
 
+// Hàm load danh sách sản phẩm top yêu thích
+function loadAll_sanpham_home_top10(){
+    $sql = "SELECT * FROM sanpham WHERE 1 order by view desc limit 0,10"; // Lấy 9 sản phẩm mới nhất
+    $list_sanpham = pdo_query($sql);
+
+    return $list_sanpham;
+}
+
 // Hàm load danh sách loại hàng hóa
 function loadAll_sanpham($keyword, $iddanhmuc){
     $sql = "SELECT * FROM sanpham WHERE 1";

@@ -11,7 +11,7 @@
     }
     // Hàm load danh sách loại hàng hóa
     function loadAll_danhmuc(){
-        $sql = "SELECT * FROM danhmuc ";    
+        $sql = "SELECT * FROM danhmuc order by id asc";    
         $list_danhmuc = pdo_query($sql);
 
         return $list_danhmuc;

@@ -15,6 +15,7 @@
     float: left;
     width: 100%;
 }
+
 .mb {
     margin-bottom: 20px;
 }
@@ -288,7 +289,7 @@
     right: 10px; /* Đặt nút next về bên phải */
     border-radius: 0 3px 3px 0;
 }
-ext {
+.ext {
     right: 0;
     border-radius: 3px 0 0 3px;
   }
@@ -345,3 +346,21 @@ ext {
     to {opacity: 1}
   }
   /* === end slide show ===  */
+
+
+  /* === Sản phẩm chi tiết ===  */
+  .spct {
+    text-align: center;
+  }
+  .boxnoidung1 {
+    background-color: #fff;
+    border-left: 1px #CCC solid #EEE;
+    border-right: 1px #CCC solid #EEE;
+    border-bottom: 1px #CCC solid #EEE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 200px;
+    padding: 20px;
+}
+
+

@@ -7,19 +7,19 @@
 
                         <!-- Full-width images with number and caption text -->
                         <div class="mySlides fade">
-                        <div class="numbertext">1 / 3</div>
+                        <!-- <div class="numbertext">1 / 3</div> -->
                         <img src="view/Images/banner.png" style="width:100%">
                         <!-- <div class="text">Caption Text</div> -->
                         </div>
 
                         <div class="mySlides fade">
-                        <div class="numbertext">2 / 3</div>
+                        <!-- <div class="numbertext">2 / 3</div> -->
                         <img src="view/Images/banner2.png" style="width:100%">
                         <!-- <div class="text">Caption Two</div> -->
                         </div>
 
                         <div class="mySlides fade">
-                        <div class="numbertext">3 / 3</div>
+                        <!-- <div class="numbertext">3 / 3</div> -->
                         <img src="view/Images/banner3.png" style="width:100%">
                         <!-- <div class="text">Caption Three</div> -->
                         </div>
@@ -51,11 +51,11 @@
                             } else {
                                 $mr = "mr";
                             }
-
+                            $linksp = "index.php?act=sanphamchitiet&idsanpham=".$id;
                             echo '<div class="boxsanpham '.$mr.'">
-                                    <div class="row img"><img src="'.$hinhanh.'" alt=""></div> 
+                                    <div class="row img"><a href="'.$linksp.'"><img src="'.$hinhanh.'" alt=""></a></div> 
                                     <p>'.$price.'</p>
-                                    <a href="#">'.$name.'</a>
+                                    <a href="'.$linksp.'">'.$name.'</a>
                                 </div>';
                                 $i+= 1;
                         }
@@ -108,105 +108,9 @@
                 </div>
             </div>
             <div class="boxphai">
-                <div class="row mb">
-                    <div class="boxtieude">TÀI KHOẢN</div>
-                    <div class="boxnoidung formtaikhoan">
-                        <form action="#" method="post">
-                            <div class="row mb10">
-                                Tên đăng nhập<br>
-                                <input type="text" name="user" id="" autocomplete="off">
-                            </div>
-                            <div class="row mb10">
-                                 Mật khẩu<br>
-                                <input type="password" name="password" id="">
-                            </div>
-                            <div class="row mb10">
-                                <input type="checkbox" name="" id="">Ghi nhớ tài khoản?
-                            </div>
-                            <div class="row mb10">
-                                <input type="submit" value="Đăng nhập">
-                            </div>
-                        </form>
-                        <li>
-                            <a href="#">Quên mật khẩu</a>
-                        </li>
-                        <li>
-                            <a href="#">Đăng ký thành viên</a>
-                        </li>
-                    </div>
-                </div>
-                <div class="row mb">
-                    <div class="boxtieude">DANH MỤC</div>
-                    <div class="boxnoidung2 menu_doc">
-                        <ul>
-                            <li>
-                                <a href="#">Gà rán</a>
-                            </li>
-                            <li>
-                                <a href="#">Pizza</a>
-                            </li>
-                            <li>
-                                <a href="#">Hamburger</a>
-                            </li>
-                            <li>
-                                <a href="#">Nước ngọt</a>
-                            </li>
-                            <li>
-                                <a href="#">Kem</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="boxfooter searchbox">
-                        <form action="#" method="post">
-                            <input type="text" name="#" id="searchbox" placeholder="Từ khóa tìm kiếm">
-                        </form>
-                    </div>
-                </div>
-                <div class="row mb">
-                    <div class="boxtieude">TOP 10 YÊU THÍCH</div>
-                    <div class="boxnoidung row">
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav1.png" alt=""> 
-                            <a href="">Gà rán giòn cay</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav2.png" alt=""> 
-                            <a href="">Gà sốt phô mai</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav3.png" alt=""> 
-                            <a href="">Burger bò phô mai</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav4.png" alt=""> 
-                            <a href="">Burger gà giòn</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav5.png" alt=""> 
-                            <a href="">Pizza phô mai</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav6.png" alt=""> 
-                            <a href="">Pizza hải sản</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="..view/Images/fav7.png" alt=""> 
-                            <a href="">Mì Ý sốt bò bằm</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav8.png" alt=""> 
-                            <a href="">Mì Ý sốt kem (Carbonara)</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav9.png" alt=""> 
-                            <a href="">Khoai tây chiên</a>
-                        </div>
-                        <div class="row mb10 top10">
-                            <img src="view/Images/fav10.png" alt=""> 
-                            <a href="">Gà nướng mật ong</a>
-                        </div>
-                    </div>
-                </div>
-                
+                <?php 
+                    include "boxphai.php";
+                ?>
+
             </div>
         </div>
