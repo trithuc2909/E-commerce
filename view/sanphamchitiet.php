@@ -27,7 +27,13 @@
     <div class="row mb">
         <div class="boxtieude">SẢN PHẨM CÙNG LOẠI</div>
             <div class="boxnoidung1 row">
-                
+                <?php 
+                    foreach ($sp_cungloai as $sp_cungloai) {
+                        extract($sp_cungloai);
+                        $linksp = "index.php?act=sanphamchitiet&idsanpham=".$id;
+                        echo '<li><a href="'.$linksp.'">'.$name.'</a></li>';
+                    }
+                ?>
 
             </div>
     </div>

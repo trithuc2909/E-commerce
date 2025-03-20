@@ -59,6 +59,22 @@ function loadOne_sanpham($id){
     
     return $sanpham;
 }
+// Hàm load tên danh mục sản phẩm
+function load_ten_danhmuc($id){
+    $sql = "SELECT * FROM danhmuc WHERE id = :id";
+    $danhmuc = pdo_query_one($sql, [':id' => $id]);
+    extract($danhmuc);
+
+    return $name;
+}
+//Hàm lấy sản phẩm cùng loại
+function load_sanpham_cungloai($id, $iddanhmuc) {
+    $sql = "SELECT * FROM sanpham WHERE iddanhmuc =".$iddanhmuc." AND id <> :id";
+    $list_sanpham = pdo_query($sql, [':id' => $id]);
+
+    return $list_sanpham;
+}
+
 
 //Hàm cập nhật loại hàng hóa
 function update_sanpham($id, $tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {

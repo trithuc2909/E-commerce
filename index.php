@@ -12,10 +12,27 @@
     if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         $act = $_GET['act'];
         switch ($act) {
+            case 'sanpham':
+                
+                if (isset($_GET['iddanhmuc']) && ($_GET['iddanhmuc'] > 0)){
+                    $iddanhmuc = $_GET['iddanhmuc'];
+                    $dssanpham = loadAll_sanpham("", $iddanhmuc);
+                    $tendm = load_ten_danhmuc($iddanhmuc);
+                    include "view/sanpham.php";
+                } else {
+                    include "view/home.php";
+                }
+                
+                break;
+
             case 'sanphamchitiet':
+                
                 if (isset($_GET['idsanpham']) && ($_GET['idsanpham'] > 0)){
                     $id = $_GET['idsanpham'];
+
                     $onesanpham = loadOne_sanpham($id);
+                    extract($onesanpham);
+                    $sp_cungloai = load_sanpham_cungloai($id,$iddanhmuc);
                     include "view/sanphamchitiet.php";
                 } else {
                     include "view/home.php";

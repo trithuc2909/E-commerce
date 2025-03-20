@@ -352,6 +352,9 @@
   .spct {
     text-align: center;
   }
+  .spct img{
+    width: 50%;
+  }
   .boxnoidung1 {
     background-color: #fff;
     border-left: 1px #CCC solid #EEE;
