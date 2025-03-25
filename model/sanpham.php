@@ -61,9 +61,14 @@ function loadOne_sanpham($id){
 }
 // Hàm load tên danh mục sản phẩm
 function load_ten_danhmuc($id){
-    $sql = "SELECT * FROM danhmuc WHERE id = :id";
-    $danhmuc = pdo_query_one($sql, [':id' => $id]);
-    extract($danhmuc);
+    if($id > 0) {
+        $sql = "SELECT * FROM danhmuc WHERE id = :id";
+        $danhmuc = pdo_query_one($sql, [':id' => $id]);
+        extract($danhmuc);
+    } else {
+        return "";
+    }
+
 
     return $name;
 }

@@ -43,8 +43,9 @@
             </ul>
         </div>
         <div class="boxfooter searchbox">
-            <form action="#" method="post">
-                <input type="text" name="#" id="searchbox" placeholder="Từ khóa tìm kiếm">
+            <form action="index.php?act=sanpham" method="post">
+                <input type="text" name="keyword" id="searchbox" placeholder="Từ khóa tìm kiếm">
+                <input type="submit" name="timkiem" value="Tìm kiếm">
             </form>
         </div>
     </div>

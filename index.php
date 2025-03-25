@@ -13,16 +13,20 @@
         $act = $_GET['act'];
         switch ($act) {
             case 'sanpham':
-                
+                if (isset($_POST['keyword']) && ($_POST['keyword']!="")){
+                    $keyword = $_POST['keyword'];
+                } else {
+                    $keyword ="";
+                }
                 if (isset($_GET['iddanhmuc']) && ($_GET['iddanhmuc'] > 0)){
                     $iddanhmuc = $_GET['iddanhmuc'];
-                    $dssanpham = loadAll_sanpham("", $iddanhmuc);
+                    
+                } else {
+                    $iddanhmuc = 0;
+                }
+                    $dssanpham = loadAll_sanpham($keyword, $iddanhmuc);
                     $tendm = load_ten_danhmuc($iddanhmuc);
                     include "view/sanpham.php";
-                } else {
-                    include "view/home.php";
-                }
-                
                 break;
 
             case 'sanphamchitiet':
