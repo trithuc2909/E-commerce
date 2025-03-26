@@ -21,7 +21,7 @@
             <a href="#">Quên mật khẩu</a>
         </li>
         <li>
-            <a href="#">Đăng ký thành viên</a>
+            <a href="index.php?act=dangky">Đăng ký thành viên</a>
         </li>
     </div>
     </div>

@@ -2,8 +2,10 @@
     include "model/pdo.php";
     include "model/sanpham.php";
     include "model/danhmuc.php";
+    include "model/taikhoan.php";
     include "view/header.php";
     include "global.php";
+
 
     $san_pham_moi = loadAll_sanpham_home();
     $dsdm = loadAll_danhmuc();
@@ -16,7 +18,7 @@
                 if (isset($_POST['keyword']) && ($_POST['keyword']!="")){
                     $keyword = $_POST['keyword'];
                 } else {
-                    $keyword ="";
+                    $keyword =""; 
                 }
                 if (isset($_GET['iddanhmuc']) && ($_GET['iddanhmuc'] > 0)){
                     $iddanhmuc = $_GET['iddanhmuc'];
@@ -43,7 +45,19 @@
                 }
                 
                 break;
+            case 'dangky':
+                $thongbao = ""; 
+                if(isset($_POST['dangky'])&&($_POST['dangky'])) {
+                    $email= $_POST['email'];
+                    $user = $_POST['user'];
+                    $password = $_POST['pass'];
 
+                    insert_taikhoan($email, $user, $password);
+
+                    $thongbao ="Đã đăng ký thành công!";
+                }
+                include "view/taikhoan/dangky.php";
+                break;
             case 'gioithieu':
                 
                 include "view/gioithieu.php";
