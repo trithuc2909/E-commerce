@@ -1,20 +1,44 @@
 <div class="row mb">
     <div class="boxtieude">TÀI KHOẢN</div>
     <div class="boxnoidung formtaikhoan">
-        <form action="#" method="post">
+        <?php 
+            if (isset($_SESSION['user'])) {
+                extract($_SESSION['user']);
+        ?>
+            <div class="row mb15">
+                Xin chào <?=$user?>
+            </div>
+            <div class="row mb15">
+                <li>
+                    <a href="index.php?act=quenmk">Quên mật khẩu<br></a> 
+                </li>
+                <li>
+                    <a href="index.php?act=edit_taikhoan">Cập nhật thông tin cá nhân</a>
+                </li>
+                <li>
+                    <a href="admin/index.php">Đăng nhập Admin</a>
+                </li>
+                <li>
+                    <a href="index.php?act=logout">Đăng xuất</a>
+                </li>
+            </div>
+        <?php 
+            } else {
+        ?> 
+        <form action="index.php?act=dangnhap" method="post">
             <div class="row mb10">
                 Tên đăng nhập<br>
                 <input type="text" name="user" id="" autocomplete="off">
             </div>
             <div class="row mb10">
                     Mật khẩu<br>
-                <input type="password" name="password" id="">
+                <input type="password" name="pass">
             </div>
             <div class="row mb10">
-                <input type="checkbox" name="" id="">Ghi nhớ tài khoản?
+                <input type="checkbox" name="">Ghi nhớ tài khoản?
             </div>
             <div class="row mb10">
-                <input type="submit" value="Đăng nhập">
+                <input type="submit" value="Đăng nhập" name ="dangnhap">
             </div>
         </form>
         <li>
@@ -23,6 +47,7 @@
         <li>
             <a href="index.php?act=dangky">Đăng ký thành viên</a>
         </li>
+        <?php } ?>    
     </div>
     </div>
     <div class="row mb">

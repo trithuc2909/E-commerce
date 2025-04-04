@@ -9,6 +9,13 @@ function insert_taikhoan($email, $user, $password) {
         ':password' => $password
     ]);
 }
-
+// hàm kiểm tra thông tin user
+function checkuser($user, $password) {
+    $sql = "SELECT * FROM taikhoan WHERE user = :user AND password = :pass";
+    return pdo_query_one($sql, [
+        ':user' => $user,
+        ':pass' => $password
+    ]);
+}
 
 ?>
