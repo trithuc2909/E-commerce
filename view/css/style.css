@@ -381,7 +381,6 @@
     width: 100%;
     border: 1px #CCC solid;
     padding: 5px;
-    padding-left: 35px;
     border-radius: 5px; 
 }
 
@@ -403,7 +402,14 @@
 
   /* === thông báo ===  */
 .thongbao {
-    color: green; /* Màu chữ trắng */
+    color: red; /* Màu chữ trắng */
     font-size: 16px; /* Cỡ chữ */
     font-weight: bold; /* In đậm chữ */
+}
+
+.thongbao_taikhoan {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
 }

@@ -2,7 +2,7 @@
     <div class="boxtieude">TÀI KHOẢN</div>
     <div class="boxnoidung formtaikhoan">
         <?php 
-            if (isset($_SESSION['user'])) {
+            if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                 extract($_SESSION['user']);
         ?>
             <div class="row mb15">
@@ -13,7 +13,7 @@
                     <a href="index.php?act=quenmk">Quên mật khẩu<br></a> 
                 </li>
                 <li>
-                    <a href="index.php?act=edit_taikhoan">Cập nhật thông tin cá nhân</a>
+                    <a href="index.php?act=edit_taikhoan">Cập nhật tài khoản</a>
                 </li>
                 <li>
                     <a href="admin/index.php">Đăng nhập Admin</a>

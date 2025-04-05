@@ -60,6 +60,7 @@
                 }
                 include "view/taikhoan/dangky.php";
                 break;
+        
             case 'dangnhap':
                 $thongbao = ""; 
                 if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])) {
@@ -69,13 +70,42 @@
                     $checkuser = checkuser($user, $password);
                     if (is_array($checkuser)){
                         $_SESSION['user'] = $checkuser;
-                        // $thongbao ="Bạn đã đăng nhập thành công!";
+                        $thongbao ="Bạn đã đăng nhập thành công!";
                         header('Location: index.php'); // Chuyển trang khi đăng nhập thành công!
                     } else {
                         $thongbao ="Tài khoản không tồn tại vui lòng kiểm tra hoặc đăng ký!";
                     }
                 }
                 include "view/taikhoan/dangky.php";
+                break;
+            case 'edit_taikhoan':
+                $thongbao_taikhoan = ""; 
+                if(isset($_POST['capnhat'])&&($_POST['capnhat'])) {
+                    // Lấy giá trị từ ô input
+                    $user = $_POST['user'];
+                    $password = $_POST['password'];
+                    $email = $_POST['email'];
+                    $address = $_POST['address'];
+                    $telephone = $_POST['telephone'];
+                    $id = $_POST['id'];
+                    
+                    update_taikhoan($id, $user, $password, $email, $address, $telephone);
+
+                    $_SESSION['user'] = checkuser($user, $password); // Cập nhật lại thông tin user mới
+
+                    //Gán thông báo cập nhật thành công vào session
+                    $_SESSION['thongbao_taikhoan'] = "Cập nhật thành công!";
+
+                    header('Location: index.php?act=edit_taikhoan'); // Load lại trang cập nhật tài khoản!
+                    exit(); // Thêm exit() sau header để dừng việc thực thi mã còn lại
+                }
+
+                // Lấy thông báo ra để hiển thị, sau đó xóa
+                if (isset($_SESSION['thongbao_taikhoan'])) {
+                    $thongbao_taikhoan = $_SESSION['thongbao_taikhoan'];
+                    unset($_SESSION['thongbao_taikhoan']); 
+                }
+                include "view/taikhoan/edit_taikhoan.php";
                 break;    
             case 'gioithieu':
                 
