@@ -24,4 +24,12 @@ function update_taikhoan($id, $user, $password, $email, $address, $telephone) {
             email='".$email."', address='".$address."', telephone='".$telephone."' WHERE id=".$id;
             pdo_execute($sql);
 }
+
+// hàm kiểm tra email
+function checkemail($email) {
+    $sql = "SELECT * FROM taikhoan WHERE email = :email";
+    return pdo_query_one($sql, [
+        ':email' => $email    
+    ]);
+}
 ?>

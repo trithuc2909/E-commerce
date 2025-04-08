@@ -107,6 +107,23 @@
                 }
                 include "view/taikhoan/edit_taikhoan.php";
                 break;    
+            case 'quenmk':
+                if(isset($_POST['guiemail'])&&($_POST['guiemail'])) {
+                    // Lấy giá trị từ ô input
+                    $email = $_POST['email'];
+
+                    // Gọi hàm check email để kiểm tra
+                    $checkemail = checkemail($email);
+                    if (is_array($checkemail)) {
+                        $thongbaoemail = "Mật khẩu của bạn là: ".$checkemail['password'];
+                    } else {
+                        $thongbaoemail = "Tài khoản không tồn tại!";
+                    }
+
+                }
+
+                include "view/taikhoan/quenmk.php";
+                break; 
             case 'gioithieu':
                 
                 include "view/gioithieu.php";
