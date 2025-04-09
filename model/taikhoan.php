@@ -32,4 +32,25 @@ function checkemail($email) {
         ':email' => $email    
     ]);
 }
+
+// Hàm load tất cả danh sách tài khoản
+function loadAll_taikhoan(){
+    $sql = "SELECT * FROM taikhoan order by id asc";    
+    $list_taikhoan = pdo_query($sql);
+
+    return $list_taikhoan;
+}
+
+function insert_taikhoan_admin($user, $password, $email, $address, $telephone, $role) {
+    $sql = "INSERT INTO taikhoan (user, password, email, address, telephone, role) 
+            VALUES (:user, :password, :email, :address, :telephone, :role)";
+    pdo_execute($sql, [
+        ':user' => $user,
+        ':password' => $password,
+        ':email' => $email,
+        ':address' => $address,
+        ':telephone' => $telephone,
+        ':role' => $role
+    ]);
+}
 ?>

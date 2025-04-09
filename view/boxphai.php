@@ -15,11 +15,13 @@
                 <li>
                     <a href="index.php?act=edit_taikhoan">Cập nhật tài khoản</a>
                 </li>
+                <?php if($role == 1) {?>
                 <li>
                     <a href="admin/index.php">Đăng nhập Admin</a>
                 </li>
+                <?php }?>
                 <li>
-                    <a href="index.php?act=logout">Đăng xuất</a>
+                    <a href="index.php?act=dangxuat">Đăng xuất</a>
                 </li>
             </div>
         <?php 

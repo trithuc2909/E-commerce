@@ -123,7 +123,12 @@
                 }
 
                 include "view/taikhoan/quenmk.php";
-                break; 
+                break;
+            case 'dangxuat':
+                session_unset(); // hủy session
+                header('Location: index.php');
+                break;
+                 
             case 'gioithieu':
                 
                 include "view/gioithieu.php";
