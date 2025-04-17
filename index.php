@@ -44,8 +44,9 @@
                     include "view/sanphamchitiet.php";
                 } else {
                     include "view/home.php";        
-                    break;
+                    
                 }
+                break;
 
             case 'dangky':
                 $thongbao = ""; 

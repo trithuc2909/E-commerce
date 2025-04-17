@@ -16,12 +16,15 @@
             </div>
     </div>
 
-    <div class="row mb">
-        <div class="boxtieude">BÌNH LUẬN</div>
-            <div class="boxnoidung1 row">
-                
+    <!-- sử dụng jQuery để load dữ liệu bình luận -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#binhluan").load("view/binhluan/binhluanform.php", {idpro: <?=$id?>});
+        });
+    </script>
+    <div class="row" id="binhluan">
 
-            </div>
     </div>
 
     <div class="row mb">
@@ -38,11 +41,11 @@
             </div>
     </div>
 
-        </div>
+    </div>
     </div>
     <div class="boxphai">
         <?php 
-        include "boxphai.php";
+        include  "view/boxphai.php";
         ?>
     </div>
 </div>

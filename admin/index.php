@@ -4,6 +4,7 @@
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     include "../model/taikhoan.php";
+    include "../model/binhluan.php";
 
     // Controller Danh mục
     if (isset($_GET["act"])) {
@@ -220,8 +221,18 @@
                         $thong_bao = "<p style='color: red;'>Vui lòng nhập đầy đủ thông tin (tên tài khoản, mật khẩu, email)</p>";
                     }
                 }
-
                 include "taikhoan/add.php";
+                break;
+            case 'dsbl':
+                if (isset($_REQUEST['idpro'])) {
+                    $idpro = $_REQUEST['idpro'];
+                    $list_binhluan = loadAll_binhluan($idpro);
+                    include "binhluan/list.php";
+                } else {
+                    // Xử lý trường hợp không có idpro
+                    echo "Sản phẩm không tồn tại.";
+                }
+                include "binhluan/list.php";
                 break;            
             default:
                 include "home.php";
