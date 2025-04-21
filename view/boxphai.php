@@ -72,12 +72,14 @@
         <div class="boxfooter searchbox">
             <form action="index.php?act=sanpham" method="post">
                 <input type="text" name="keyword" id="searchbox" placeholder="Từ khóa tìm kiếm">
-                <input type="submit" name="timkiem" value="Tìm kiếm">
+                <button type="submit" name="timkiem" value="">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>   
             </form>
         </div>
     </div>
-    <div class="row mb">
-        <div class="boxtieude">TOP 10 YÊU THÍCH</div>
+    <div class="row mb">        
+        <div class="boxtieude">TOP 10 YÊU THÍCH</div>        
         <div class="boxnoidung row">
             <?php
                 foreach ($sptop10 as $sanpham) {

@@ -223,17 +223,96 @@
                 }
                 include "taikhoan/add.php";
                 break;
-            case 'dsbl':
-                if (isset($_REQUEST['idpro'])) {
-                    $idpro = $_REQUEST['idpro'];
-                    $list_binhluan = loadAll_binhluan($idpro);
-                    include "binhluan/list.php";
-                } else {
-                    // Xử lý trường hợp không có idpro
-                    echo "Sản phẩm không tồn tại.";
+            case 'suatk':
+                if(isset($_GET['id']) && ($_GET['id'])) {
+                    $taikhoan = loadOne_taikhoan($_GET['id']);
+                    if (!$taikhoan) {
+                        $thong_bao = "Không tìm thấy tài khoản!";
+                    }
                 }
+                
+                include "taikhoan/update.php";
+                break;
+            case 'updatetk':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                    $id = $_POST['id'];
+                    $user = trim($_POST['user']);
+                    $password = trim($_POST['password']);
+                    $email = trim($_POST['email']);
+                    $address = trim($_POST['address']);
+                    $telephone = trim($_POST['telephone']);
+                    $role = $_POST['role'];
+                    
+                    // Lấy tài khoản cũ trong DB
+                    $tk_cu = loadOne_taikhoan($id);
+
+                    $loi = [];
+                    $cothaydoi = false;
+                    if ($password != $tk_cu['password']) $cothaydoi = true;
+                    if ($address != $tk_cu['address']) $cothaydoi = true;
+                    if ($role != $tk_cu['role']) $cothaydoi = true;
+                    if ($email != $tk_cu['email']) {
+                        $cothaydoi = true;
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $loi['email'] = "<span style='color: red;'>Email không đúng định dạng!</span>";
+                        } elseif(checkemail($email)) {
+                            $loi['email'] = "<span style='color: red;'>Email đã tồn tại!</span>";
+                        } 
+                    }    
+                    if ($telephone != $tk_cu['telephone']){
+                        $cothaydoi = true;
+                        if (checkTelephone($telephone)) {
+                            $loi['telephone'] = "<span style='color: red;'>Số điện thoại đã tồn tại!</span>";
+                        }
+                    }
+                    if (!$cothaydoi) {
+                        $thong_bao = "<span style='color: red;'>Bạn chưa thay đổi gì!</span>";
+                    } elseif (empty($loi)) {
+                        update_taikhoan($id, $user, $password, $email, $address, $telephone, $role);
+                        $thong_bao = "<span style='color: green;'>Cập nhật tài khoản thành công!</span>";
+                    }
+                }
+                $taikhoan = loadOne_taikhoan($id);
+                include "taikhoan/update.php";
+                break;
+            case 'xoatk':
+                if(isset($_GET['id']) && ($_GET['id']) > 0) {
+                    delete_taikhoan($_GET['id']);
+                }
+                $list_taikhoan = loadAll_taikhoan();
+                include "taikhoan/list.php";
+                break;
+            case 'xoatk_multi':
+                if (isset($_POST['id'])&& is_array($_POST['id'])){
+                    foreach ($_POST['id'] as $id) {
+                        delete_taikhoan($id);
+                    }
+                }
+                $list_binhluan = loadAll_binhluan(0);
                 include "binhluan/list.php";
-                break;            
+                break;    
+            // Controller Bình luận    
+            case 'dsbl':
+                $list_binhluan = loadAll_binhluan(0);
+
+                include "binhluan/list.php";
+                break;
+            case 'xoabl':
+                if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
+                    delete_binhluan($_GET["id"]);
+                }
+                $list_binhluan = loadAll_binhluan(0);
+                include "binhluan/list.php";
+                break;
+            case 'xoabl_multi':
+                if (isset($_POST['id'])&& is_array($_POST['id'])){
+                    foreach ($_POST['id'] as $id) {
+                        delete_binhluan($id);
+                    }
+                }
+                $list_binhluan = loadAll_binhluan(0);
+                include "binhluan/list.php";
+                break;
             default:
                 include "home.php";
                 break;

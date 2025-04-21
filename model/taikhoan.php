@@ -19,9 +19,9 @@ function checkuser($user, $password) {
 }
 
 //Hàm cập nhật tài khoản
-function update_taikhoan($id, $user, $password, $email, $address, $telephone) {
+function update_taikhoan($id, $user, $password, $email, $address, $telephone, $role) {
     $sql = "UPDATE taikhoan set  user='".$user."', password='".$password."',
-            email='".$email."', address='".$address."', telephone='".$telephone."' WHERE id=".$id;
+            email='".$email."', address='".$address."', telephone='".$telephone."',role='".$role."'  WHERE id=".$id;
             pdo_execute($sql);
 }
 
@@ -30,6 +30,13 @@ function checkemail($email) {
     $sql = "SELECT * FROM taikhoan WHERE email = :email";
     return pdo_query_one($sql, [
         ':email' => $email    
+    ]);
+}
+// hàm kiểm tra SĐT tồn tại hay chưa
+function checkTelephone($telephone) {
+    $sql = "SELECT * FROM taikhoan WHERE telephone = :telephone";
+    return pdo_query_one($sql, [
+        ':telephone' => $telephone    
     ]);
 }
 
@@ -53,4 +60,18 @@ function insert_taikhoan_admin($user, $password, $email, $address, $telephone, $
         ':role' => $role
     ]);
 }
+
+// Hàm xóa bình luận
+function delete_taikhoan($id) {
+    $sql = "DELETE FROM taikhoan WHERE id = " .$id;
+    pdo_execute($sql);
+}
+// Hàm lấy thông tin 1 tài khoản
+function loadOne_taikhoan($id){
+    $sql = "SELECT * FROM taikhoan WHERE id = " .$id;
+    $taikhoan = pdo_query_one($sql);
+    
+    return $taikhoan;
+}
+
 ?>

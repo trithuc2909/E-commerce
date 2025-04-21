@@ -3,6 +3,7 @@
                 <h1>DANH SÁCH TÀI KHOẢN</h1>
             </div>    
             <div class="row form_noidung">
+            <form action="index.php?act=xoatk_multi" method="post">
                 <div class="row mb10 form_dsloai">
                     <table>
                         <tr>
@@ -23,7 +24,7 @@
                                 $xoatk = "index.php?act=xoatk&id=" .$id;
 
                                 echo '<tr>
-                                        <td><input type="checkbox" name="" id=""> </td>
+                                        <td><input type="checkbox" name="id[]" value="'.$id.'"> </td>
                                         <td>'.$id.'</td>
                                         <td>'.$user.'</td>
                                         <td>'.$password.'</td>
@@ -39,10 +40,17 @@
                     </table>
                 </div>
                 <div class="row mb10">
-                    <input type="button" value="Chọn tất cả">
-                    <input type="button" value="Bỏ chọn tất cả">
-                    <input type="button" value="Xóa các mục đã chọn">
+                    <input type="button" value="Chọn tất cả" onclick="selectAll(true)">
+                    <input type="button" value="Bỏ chọn tất cả" onclick="selectAll(false)">
+                    <input type="submit" value="Xóa các mục đã chọn" onclick="return confirm('Bạn có chắc muốn xóa các tài khoản đã chọn không ?')">
                     <a href="index.php?act=addtk"><input type="button" value="Nhập thêm"></a>
                 </div>
+            </form>
+            <script>
+                function selectAll(status) {
+                    const checkboxes = document.querySelectorAll('input[name="id[]"]');
+                    checkboxes.forEach(cb => cb.checked = status);
+                }
+            </script>
             </div>
         </div>

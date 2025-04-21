@@ -20,7 +20,7 @@ function delete_sanpham($id) {
 
 // Hàm load danh sách loại hàng hóa
 function loadAll_sanpham_home(){
-    $sql = "SELECT * FROM sanpham WHERE 1 order by id desc limit 0,9"; // Lấy 9 sản phẩm mới nhất
+    $sql = "SELECT * FROM sanpham WHERE 1 order by id asc limit 0,9"; // Lấy 9 sản phẩm mới nhất
     $list_sanpham = pdo_query($sql);
 
     return $list_sanpham;

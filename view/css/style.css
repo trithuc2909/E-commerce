@@ -225,12 +225,23 @@
 }
 
 /* === search box === */
-
+.searchbox form{
+    display: flex;
+    gap: 3px;
+}
 .searchbox input[type = "text"] {
     width: 100%;
     border-radius: 5px;
     border: 1px #CCC solid;
     padding: 5px 10px;
+}
+.searchbox button[type = "submit"] {
+    text-align: center;
+    width: 15%;
+    border-radius: 5px;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 /* === top10 yêu thích  */
@@ -413,7 +424,12 @@
     font-weight: bold;
     margin-top: 10px;
 }
-
+.loi {
+    color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: block;
+}
 
 /* === Bình luận ===  */
 .binhluan table{
