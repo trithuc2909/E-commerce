@@ -51,16 +51,12 @@
         </div>
         <div class="row mb">
         <div class="boxtieude">THÔNG TIN GIỎ HÀNG</div>
-            <div class="boxnoidung row">
+            <div class="boxnoidung row cart">
                 <table>
                     <tr>
-                        <td>STT</td>
-                        <td>Hình</td>
-                        <td>Sản phẩm</td>
-                        <td>Đơn giá</td>
-                        <td>Số lượng</td>
-                        <td>Thành tiền</td>
-                    </tr>
+                    <?php 
+                        viewcart(0);
+                    ?>
                 </table>
             </div>
         </div>

@@ -5,6 +5,7 @@
     include "model/sanpham.php";
     include "model/danhmuc.php";
     include "model/taikhoan.php";
+    include "model/cart.php";
     include "view/header.php";
     include "global.php";
 

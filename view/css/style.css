@@ -11,7 +11,18 @@
     width: 70%;
     margin: 0 auto;
 }
-
+button[type="button"] {
+    background-color: #444444;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px #252836 solid;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+button[type="button"]:hover {
+    background-color: #666666;
+    cursor: pointer;
+}
 .row {
     float: left;
     width: 100%;
@@ -532,4 +543,16 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+.bill input[type="button"] {
+    background-color: #444444;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px #252836 solid;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+.bill input[type="button"]:hover {
+    background-color: #666666;
+    cursor: pointer;
 }
