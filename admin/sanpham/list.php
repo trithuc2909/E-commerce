@@ -17,7 +17,7 @@
             </form>
             <div class="row form_noidung">
                 <div class="row mb10 form_dsloai">
-                    
+                <form action="index.php?act=xoasp_multi" method="post">
                     <table>
                         <tr>
                             <th></th> <!--Tiêu đề <th> -->
@@ -41,7 +41,7 @@
                                 }
 
                                 echo '<tr>
-                                        <td><input type="checkbox" name="" id=""> </td>
+                                        <td><input type="checkbox" name="id[]" id=""> </td>
                                         <td>'.$id.'</td>
                                         <td>'.$name.'</td>
                                         <td>'.$hinhanh.'</td>
@@ -55,10 +55,18 @@
                     </table>
                 </div>
                 <div class="row mb10">
-                    <input type="button" value="Chọn tất cả">
-                    <input type="button" value="Bỏ chọn tất cả">
-                    <input type="button" value="Xóa các mục đã chọn">
+                    <input type="button" value="Chọn tất cả" onclick="selectAll(true)">
+                    <input type="button" value="Bỏ chọn tất cả" onclick="selectAll(false)">
+                    <input type="submit" value="Xóa các mục đã chọn" onclick="return confirm('Bạn có chắc muốn xóa các bình luận đã chọn không ?')">
                     <a href="index.php?act=addsp"><input type="button" value="Nhập thêm"></a>
                 </div>
+            </form>
+            <script>
+                function selectAll(status) {
+                    const checkboxes = document.querySelectorAll('input[name="id[]"]');
+                    checkboxes.forEach(cb => cb.checked = status);
+                }
+            </script>
+
             </div>
         </div>

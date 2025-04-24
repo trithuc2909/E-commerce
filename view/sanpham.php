@@ -4,6 +4,9 @@
             <div class="boxtieude">SẢN PHẨM <strong><?=$tendm?></strong></div>
              <div class="boxnoidung1 row">
                 <?php
+                    if (count($dssanpham) == 0) {
+                        echo "<p>Không tìm thấy sản phẩm nào phù hợp.</p>";
+                    }
                     $i=0;
                     foreach ($dssanpham as $sanpham) {
                         extract($sanpham);

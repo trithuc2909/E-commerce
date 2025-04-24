@@ -70,9 +70,9 @@
             </ul>
         </div>
         <div class="boxfooter searchbox">
-            <form action="index.php?act=sanpham" method="post">
+            <form action="index.php?act=searchpro" method="post">
                 <input type="text" name="keyword" id="searchbox" placeholder="Từ khóa tìm kiếm">
-                <button type="submit" name="timkiem" value="">
+                <button type="submit" name="timkiem">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>   
             </form>

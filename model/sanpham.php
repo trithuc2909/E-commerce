@@ -130,6 +130,16 @@ function update_sanpham($id, $tensp, $giasp, $hinhanh, $mota, $iddanhmuc) {
     }
 }
 
+//Hàm load sản phẩm tìm kiếm
+function load_sanpham($keyword = "") {
+    $sql = "SELECT * FROM sanpham WHERE 1";
+    if ($keyword != "") {
+        $sql .=" AND name LIKE '%".$keyword."%'";
+    }
+    $sql .=" ORDER BY id desc";
+    $dssanpham = pdo_query($sql);
+    return $dssanpham;
+}
 
 
 ?>

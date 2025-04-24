@@ -1,3 +1,5 @@
+<!-- FontAwsome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <div class="row mb">
             <div class="boxtrai mr">
                 <div class="row">
@@ -55,7 +57,16 @@
                             echo '<div class="boxsanpham '.$mr.'">
                                     <div class="row img"><a href="'.$linksp.'"><img src="'.$hinhanh.'" alt=""></a></div> 
                                     <p>'.$price.'</p>
-                                    <a href="'.$linksp.'">'.$name.'</a>
+                                    <a href="'.$linksp.'">'.$name.'</a> 
+                                    <form action="index.php?act=addtocart" method="post">
+                                        <input type="hidden" name="id" value="'.$id.'">
+                                        <input type="hidden" name="name" value="'.$name.'">
+                                        <input type="hidden" name="img" value="'.$img.'">
+                                        <input type="hidden" name="price" value="'.$price.'">
+                                        <button type="submit" name="addtocart" value="1" class="btn-cart">
+                                            <i class="fa-solid fa-cart-shopping"></i>  Thêm vào giỏ hàng
+                                        </button>
+                                    </form>
                                 </div>';
                                 $i+= 1;
                         }

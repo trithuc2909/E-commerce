@@ -11,6 +11,7 @@
     width: 70%;
     margin: 0 auto;
 }
+
 .row {
     float: left;
     width: 100%;
@@ -26,6 +27,9 @@
     margin-bottom: 15px;
 }
 .mr {
+    margin-right: 2%;
+}
+.ml {
     margin-right: 2%;
 }
 .demo {
@@ -80,6 +84,16 @@
     min-height: 200px;
     padding: 20px;
 }
+.boxnoidung-pttt {
+    background-color: #CCC;
+    border-left: 1px #CCC solid #EEE;
+    border-right: 1px #CCC solid #EEE;
+    border-bottom: 1px #CCC solid #EEE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 70px;
+    padding: 20px;
+}
 .boxnoidung2 {
     background-color: #CCC;
     border-left: 1px #CCC solid #EEE;
@@ -110,26 +124,38 @@
     border-radius: 5px;
     float: left;
     width: 32%;
-    min-height: 300px;
+    min-height: 310px;
     border: 1px #484848 solid;
-    margin-bottom: 20px;
+    margin-bottom: 24.5px;
 }
 .boxsanpham .img{
+    margin-left: -8px;
     margin-top: 10px;
     min-height: 230px;
     text-align: center;
 }
 .img img {
-    height: 220px;
+    transition: transform 0.3s ease;
+    height: 210px;
+}
+.img img:hover{
+    transform: scale(1.05);
 }
 .boxsanpham a {
+    margin-bottom: 15px;
+    margin-top: 3px;
     color: #484848;
     text-decoration: none;
     padding-left: 13px;
 }
+.boxsanpham a:hover {
+    color: #FF4500;
+    transition: color 0.3s ease-in-out;
+}
 .boxsanpham p{
     color: #e31837;
     padding-left: 13px;
+    margin-bottom: 10px;
 }
 .menu ul{
     padding: 0px 15px;
@@ -432,10 +458,10 @@
 }
 
 /* === Bình luận ===  */
-.binhluan table{
+.binhluan table {
+    border-collapse: collapse;
     margin: 0;
     width: 100%;
-    margin-left: 5%;
 }
 .binhluan table td:nth-child(1) {
     width: 50%;
@@ -445,4 +471,65 @@
 }
 .binhluan table td:nth-child(1) {
     width: 30%;
+}
+.binhluanform input[type = "text"]{
+    width: 50%;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.binhluanform input[type="submit"] {
+    width: 20%;
+    border-radius: 5px;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* === GIỎ HÀNG === */
+.cart table, tr, td {
+    border-collapse: collapse;
+}
+.cart input[type="button"] {
+    background-color: #444444;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px #252836 solid;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+.cart input[type="button"]:hover {
+    background-color: #666666;
+    cursor: pointer;
+}
+.btn-cart{
+    float: left;
+    border-radius: 3px;
+    margin: 5px 10px;
+    background-color: #FFC522;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* hiệu ứng mượt */
+}
+.btn-cart:hover {
+    background-color: #e6b800;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px); /* nổi nhẹ lên */
+}
+.btn-cart i{
+    color: black;
+}
+
+.btn-cart:hover i {
+    color: white;
+}
+
+/* === BILL FORM  ====  */
+.input-bill {
+    width: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

@@ -44,7 +44,15 @@
                 $list_danhmuc = loadAll_danhmuc();
                 include "danhmuc/list.php";
                 break;
-
+            case 'xoadm_multi':
+                if(isset($_POST['id']) && is_array($_POST['id'])){
+                    foreach ($_POST['id'] as $id) {
+                        delete_danhmuc($id);
+                    }
+                }
+                $list_danhmuc = loadAll_danhmuc();
+                include "danhmuc/list.php";
+                break;
             case 'suadm':
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $danhmuc = loadOne_danhmuc($_GET["id"]);
@@ -124,7 +132,15 @@
                 $list_sanpham = loadAll_sanpham("", 0);
                 include "sanpham/list.php";
                 break;
-            
+            case 'xoasp_multi':
+                if (isset($_POST['id']) && is_array($_POST['id'])){
+                    foreach ($_POST['id'] as $id) {
+                        delete_sanpham($_GET['id']);
+                    }
+                }
+                $list_sanpham = loadAll_sanpham("", 0);
+                include "sanpham/list.php";
+                break;
             case 'suasp':
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $sanpham = loadOne_sanpham($_GET["id"]);
