@@ -194,6 +194,31 @@
             case 'bill':
                 include "view/cart/bill.php";
                 break;
+            case 'billconfirm':
+                if(isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $address = $_POST['address'];
+                    $telephone = $_POST['telephone'];
+                    $pttt = $_POST['pttt'];
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $ngaydathang = date('H:i:s d/m/Y');
+                    $tongdonhang = tongdonhang();
+                    //Tạo bill
+                    $idbill = insert_bill($name, $email, $address, $telephone, $pttt, $ngaydathang, $tongdonhang);
+
+                    // Tạo giỏ hàng 
+                    //Insert into cart: session['mycart'] & idbill
+                    foreach ($_SESSION['mycart'] as $cart) {
+                        insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5], $idbill);
+                    }
+                    // Xóa SESSION cart
+                    $_SESSION['mycart'] = [];
+                }
+                $bill = loadOne_bill($idbill);
+                $billct = loadAll_cart($idbill);
+                include "view/cart/billconfirm.php";
+                break;
             default:
                 include "view/home.php";
                 break;

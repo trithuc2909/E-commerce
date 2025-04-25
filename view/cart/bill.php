@@ -42,9 +42,9 @@
             <div class="boxnoidung-pttt row">
                 <table>
                     <tr>
-                        <td><input type="radio" name="pttt" checked>Thanh toán khi nhận hàng</td>
-                        <td><input type="radio" name="pttt">Chuyển khoản ngân hàng</td>
-                        <td><input type="radio" name="pttt">Thanh toán online</td>
+                        <td><input type="radio" name="pttt" checked value="1">Thanh toán khi nhận hàng</td>
+                        <td><input type="radio" name="pttt" value="2">Chuyển khoản ngân hàng</td>
+                        <td><input type="radio" name="pttt" value="3">Thanh toán online</td>
                     </tr>
                 </table>
             </div>
@@ -59,6 +59,9 @@
                     ?>
                 </table>
             </div>
+        </div>
+        <div class="row mb bill">
+            <input type="submit" value="Đồng ý đặt hàng" name="dongydathang"></input>
         </div>
     </div>
 
