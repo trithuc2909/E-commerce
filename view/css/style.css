@@ -74,6 +74,9 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+.boxtieude strong {
+    font-weight: normal;
+}
 .boxnoidung {
     background-color: #CCC;
     border-left: 1px #CCC solid #EEE;
@@ -81,6 +84,14 @@
     border-bottom: 1px #CCC solid #EEE;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    min-height: 200px;
+    padding: 20px;
+}
+.boxnoidung-bl {
+    background-color: #CCC;
+    border-left: 1px #CCC solid #EEE;
+    border-right: 1px #CCC solid #EEE;
+    border-bottom: 1px #CCC solid #EEE;
     min-height: 200px;
     padding: 20px;
 }
@@ -107,7 +118,6 @@
     background-color: #484848;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 .banner {
     margin-bottom: 20px;
@@ -269,6 +279,7 @@
     padding: 5px 10px;
     cursor: pointer;
 }
+
 
 /* === top10 yêu thích  */
 .top10 img{
@@ -479,9 +490,20 @@
     border-radius: 5px;
 }
 .binhluanform input[type="submit"] {
+    background-color: #e31837;
+    color: #fff;
     width: 20%;
     border-radius: 5px;
-    border: 1px #CCC solid;
+    border: 1px solid #e31837;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.binhluanform input[type="submit"]:hover {
+    background-color: #f94a5d;
+    color: #fff;
+    width: 20%;
+    border-radius: 5px;
+    border: 1px solid #e31837;
     padding: 5px 10px;
     cursor: pointer;
 }

@@ -54,8 +54,8 @@
         return $tong;
     }
     // Hàm thêm mới bill
-    function insert_bill($name, $email, $address, $telephone, $pttt, $ngaydathang, $tongdonhang){
-        $sql = "INSERT INTO bill(bill_name, bill_email, bill_address, bill_tel, bill_pttt,ngaydathang, total) VALUES ('$name', '$email', '$address', '$telephone', '$pttt', '$ngaydathang', '$tongdonhang')";
+    function insert_bill($iduser, $name, $email, $address, $telephone, $pttt, $ngaydathang, $tongdonhang){
+        $sql = "INSERT INTO bill(iduser, bill_name, bill_email, bill_address, bill_tel, bill_pttt,ngaydathang, total) VALUES ('$iduser','$name', '$email', '$address', '$telephone', '$pttt', '$ngaydathang', '$tongdonhang')";
         return pdo_execute_return_lastInsertId($sql);
     } 
     // Hàm thêm mới cart
@@ -75,6 +75,20 @@
         $bill = pdo_query($sql, [':idbill' => $idbill]);
         
         return $bill;
+    }
+    //Hàm hiển thị 1 cart theo idbill
+    function loadAll_bill($iduser) {
+        $sql = "SELECT * FROM bill WHERE iduser = :iduser";
+        $list_bill = pdo_query($sql, [':iduser' => $iduser]);
+        
+        return $list_bill;
+    }
+    //Hàm đếm số lượng mặt hàng trên 1 bill
+    function loadAll_cart_count($idbill) {
+        $sql = "SELECT * FROM cart WHERE idbill = :idbill";
+        $bill = pdo_query($sql, [':idbill' => $idbill]);
+        
+        return sizeof($bill);
     }
     // Show chi tiết bill
     function bill_chitiet($list_bill){
@@ -106,4 +120,26 @@
                 </tr>';
     }
 
+// Hàm GET trạng thái đơn hàng
+    function get_ttdh($n) {
+        switch ($n) {
+            case '0':
+                $tt = 'Đơn hàng mới';
+                break;
+            case '1':
+                $tt = 'Đang xử lý';
+                break;
+            case '2':
+                $tt = 'Đang giao hàng';
+                break;
+            case '3':
+                $tt = 'Đã giao hàng';
+                break;
+            
+            default:
+                $tt = 'Đơn hàng mới';
+                break;
+        }
+        return $tt;
+    }
 ?>

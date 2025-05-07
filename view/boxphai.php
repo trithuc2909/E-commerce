@@ -10,6 +10,9 @@
             </div>
             <div class="row mb15">
                 <li>
+                    <a href="index.php?act=mybill">Đơn hàng của tôi<br></a> 
+                </li>
+                <li>
                     <a href="index.php?act=quenmk">Quên mật khẩu<br></a> 
                 </li>
                 <li>

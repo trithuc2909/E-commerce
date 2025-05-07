@@ -22,7 +22,7 @@
 
 <div class="row mb">
         <div class="boxtieude">BÌNH LUẬN</div>
-        <div class="boxnoidung binhluan">
+        <div class="boxnoidung-bl binhluan">
         <table>
             <ul>
                 <?php 

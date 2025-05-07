@@ -13,7 +13,7 @@
                         }
                     ?>
                 </select>
-                <input type="submit" name="listok" value="Tìm kiếm">
+                <button type="submit" name="listok">Tìm kiếm</button>
             </form>
             <div class="row form_noidung">
                 <div class="row mb10 form_dsloai">
