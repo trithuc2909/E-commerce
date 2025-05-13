@@ -5,6 +5,7 @@
     include "../model/sanpham.php";
     include "../model/taikhoan.php";
     include "../model/binhluan.php";
+    include "../model/cart.php";
 
     // Controller Danh mục
     if (isset($_GET["act"])) {
@@ -328,6 +329,16 @@
                 }
                 $list_binhluan = loadAll_binhluan(0);
                 include "binhluan/list.php";
+                break;
+            // Controller của bill
+            case 'listbill':
+                if(isset($_POST['keyword']) && $_POST['keyword']) {
+                    $keyword = $_POST['keyword'];
+                } else {
+                    $keyword = "";
+                }
+                $list_bill = loadAll_bill($keyword,0);
+                include "bill/listbill.php";
                 break;
             default:
                 include "home.php";

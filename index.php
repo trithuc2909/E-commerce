@@ -225,15 +225,16 @@
                 $billct = loadAll_cart($idbill);
                 include "view/cart/billconfirm.php";
                 break;
-            case 'mybill':
-                if(isset($_SESSION['user'])) {
-                    $list_bill = loadAll_bill($_SESSION['user']['id']);
-                    include "view/cart/mybill.php";
-                } else {
-                    header('Location: index.php?act=dangnhap');
-                }
-      
-                break;
+        case 'mybill':
+            if(isset($_SESSION['user'])) {
+                $list_bill = loadAll_bill($_SESSION['user']['id']);
+                include "view/cart/mybill.php";
+            } else {
+                header('Location: index.php?act=dangnhap');
+            }
+            break;
+        
+
             default:
                 include "view/home.php";
                 break;

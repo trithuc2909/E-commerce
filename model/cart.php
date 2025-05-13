@@ -77,12 +77,25 @@
         return $bill;
     }
     //Hàm hiển thị 1 cart theo idbill
-    function loadAll_bill($iduser) {
-        $sql = "SELECT * FROM bill WHERE iduser = :iduser";
-        $list_bill = pdo_query($sql, [':iduser' => $iduser]);
-        
+    function loadAll_bill($keyword = "",$iduser=0) {
+        $sql = "SELECT * FROM bill WHERE 1"; 
+    
+        $params = [];
+    
+        if ($iduser > 0) {
+            $sql .= " AND iduser = :iduser";
+            $params[':iduser'] = $iduser;
+        }
+        if ($keyword != "") {
+            $sql .= " AND id LIKE :keyword";
+            $params[':keyword'] = "%" . $keyword . "%";
+        }
+        $sql .= " ORDER BY id DESC";
+    
+        $list_bill = pdo_query($sql, $params);
         return $list_bill;
     }
+    
     //Hàm đếm số lượng mặt hàng trên 1 bill
     function loadAll_cart_count($idbill) {
         $sql = "SELECT * FROM cart WHERE idbill = :idbill";
