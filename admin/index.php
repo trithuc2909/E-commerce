@@ -340,6 +340,50 @@
                 $list_bill = loadAll_bill($keyword,0);
                 include "bill/listbill.php";
                 break;
+            case 'suadh':
+                if(isset($_GET['id']) && ($_GET['id'])) {
+                    $bill = loadOne_bill($_GET['id']);
+                    if (!$bill) {
+                        $thong_bao = "Không tìm thấy đơn hàng!";
+                    }
+                }
+                
+                include "bill/update.php";
+                break;
+            case 'updatedh':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                    $id = $_POST['id'];
+                    $bill_name = trim($_POST['bill_name']);
+                    $bill_email = trim($_POST['bill_email']);
+                    $bill_address = trim($_POST['bill_address']);
+                    $bill_tel = trim($_POST['bill_tel']);
+                    $total = trim($_POST['total']);
+                    $bill_status = trim($_POST['ttdh']);
+                   
+                    
+                    // Lấy tài khoản cũ trong DB
+                    $dh_cu = loadOne_bill($id);
+
+                    $loi = [];
+                    $cothaydoi = false;
+                    if ($bill_name != $dh_cu['bill_name']) $cothaydoi = true;
+                    if ($bill_email != $dh_cu['bill_email']) $cothaydoi = true;
+                    if ($bill_address != $dh_cu['bill_address']) $cothaydoi = true;
+                    if ($bill_tel != $dh_cu['bill_tel']) $cothaydoi = true;
+                    if ($total != $dh_cu['total']) $cothaydoi = true;
+                    if ($bill_status  != $dh_cu['ttdh']) $cothaydoi = true;
+
+                    if (!$cothaydoi) {
+                        $thong_bao = "<span style='color: red;'>Bạn chưa thay đổi gì!</span>";
+                    } elseif (empty($loi)) {
+                        //Cập nhật đơn hàng
+                        update_bill($id, $bill_name,$bill_email, $bill_address,$bill_tel, $total, $bill_status);
+                        $thong_bao = "<span style='color: green;'>Cập nhật tài khoản thành công!</span>";
+                    }
+                }
+                $bill = loadOne_bill($id);
+                include "bill/update.php";
+                break;
             default:
                 include "home.php";
                 break;

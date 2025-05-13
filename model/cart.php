@@ -155,4 +155,12 @@
         }
         return $tt;
     }
+    // Hàm update đơn hàng
+    function update_bill($id, $bill_name,$bill_email, $bill_address,$bill_tel, $total, $bill_status){
+        $sql = "UPDATE bill SET  bill_name ='".$bill_name."',bill_email ='".$bill_email."',bill_address ='".$bill_address."',bill_tel ='".$bill_tel."',
+                       total ='".$total."', bill_status ='".$bill_status."'
+
+        WHERE id =" .$id;
+        pdo_execute($sql);
+    }   
 ?>
