@@ -14,7 +14,7 @@
     </div>
     <div class="form_noidung row">
         <div class="row form_dsloai ">
-        <form action="index.php?act=xoasp_multi" method="post">
+        <form action="index.php?act=xoadh_multi" method="post">
         <table>
             <tr>
                 <th></th>
@@ -34,7 +34,7 @@
                     $suadh = "index.php?act=suadh&id=" .$id;
                     $xoadh = "index.php?act=xoadh&id=" .$id;
                     echo '<tr>
-                            <td><input type="checkbox" name="id[]" id=""></td>
+                            <td><input type="checkbox" name="id[]" value="'.$bill['id'].'"></td>
                             <td>DH-'.$bill['id'].'</td>
                             <td>'.$bill['bill_name'].'
                             <br>'.$bill['bill_email'].'
@@ -44,7 +44,7 @@
                             <td>'.$bill['ngaydathang'].'</td>
                             <td><strong>'.$bill['total'].'</strong> VNĐ</td>
                             <td>'.$ttdh.'</td>
-                            <td><a href="'.$suadh.'"> <input type="button" value="sửa"></a><a href="'.$xoadh.'"><input type="button" value="xóa"></a></td>
+                            <td><a href="'.$suadh.'"> <input type="button" value="sửa"></a> <a href="'.$xoadh.'"><input type="button" value="xóa"></a></td>
                         </tr>';
                 }
             ?>
@@ -53,8 +53,7 @@
         <div class="row mb10" style="margin-top: 10px">
                     <input type="button" value="Chọn tất cả" onclick="selectAll(true)">
                     <input type="button" value="Bỏ chọn tất cả" onclick="selectAll(false)">
-                    <input type="submit" value="Xóa các mục đã chọn" onclick="return confirm('Bạn có chắc muốn xóa các bình luận đã chọn không ?')">
-                    <a href="index.php?act=addbill"><input type="button" value="Nhập thêm"></a>
+                    <input type="submit" value="Xóa các mục đã chọn" onclick="return confirm('Bạn có chắc muốn xóa các đơn hàng đã chọn không ?')">
                 </div>
         </form>
         <script>

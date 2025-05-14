@@ -163,4 +163,9 @@
         WHERE id =" .$id;
         pdo_execute($sql);
     }   
+    // Hàm xóa đơn hàng theo id
+    function delete_bill($id) {
+        $sql = "DELETE FROM bill WHERE id = " .$id;
+        pdo_execute($sql);
+    }
 ?>

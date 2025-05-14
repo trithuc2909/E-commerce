@@ -5,6 +5,7 @@
     include "../model/sanpham.php";
     include "../model/taikhoan.php";
     include "../model/binhluan.php";
+    include "../model/thongke.php";
     include "../model/cart.php";
 
     // Controller Danh mục
@@ -136,7 +137,7 @@
             case 'xoasp_multi':
                 if (isset($_POST['id']) && is_array($_POST['id'])){
                     foreach ($_POST['id'] as $id) {
-                        delete_sanpham($_GET['id']);
+                        delete_sanpham($id);
                     }
                 }
                 $list_sanpham = loadAll_sanpham("", 0);
@@ -337,7 +338,7 @@
                 } else {
                     $keyword = "";
                 }
-                $list_bill = loadAll_bill($keyword,0);
+                $list_bill = loadAll_bill("",0);
                 include "bill/listbill.php";
                 break;
             case 'suadh':
@@ -384,6 +385,29 @@
                 $bill = loadOne_bill($id);
                 include "bill/update.php";
                 break;
+            case 'xoadh':
+                if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
+                    delete_bill($_GET["id"]);
+                }
+                $list_bill = loadAll_bill("",0);
+                include "bill/listbill.php";
+                break;        
+            case 'xoadh_multi':
+                if(isset($_POST['id']) && is_array($_POST['id'])) {
+                    foreach ($_POST['id'] as $id) {
+                        delete_bill($id);
+                    }
+                }
+                $list_bill = loadAll_bill("",0);
+                include "bill/listbill.php";
+                break;
+        // Controller Thống kê
+            case 'thongke':
+                
+                $list_thongke = loadAll_thongke();
+                include "thongke/list.php";
+                break;
+
             default:
                 include "home.php";
                 break;
