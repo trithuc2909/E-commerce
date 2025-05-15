@@ -20,4 +20,9 @@
         $sql = "DELETE FROM binhluan WHERE id = " .$id;
         pdo_execute($sql);
     }
+    // Lấy bình luận mới nhất
+    function loadAll_binhluan_moi($limit = 5) {
+        $sql = "SELECT noidung, ngaybinhluan FROM binhluan ORDER BY ngaybinhluan DESC LIMIT $limit";
+        return pdo_query($sql);
+    }
 ?>

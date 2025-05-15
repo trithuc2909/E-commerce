@@ -168,4 +168,9 @@
         $sql = "DELETE FROM bill WHERE id = " .$id;
         pdo_execute($sql);
     }
+    // Lấy đơn hàng mới nhất
+    function loadAll_donhang_moi($limit = 5) {
+        $sql = "SELECT bill_name, ngaydathang FROM bill ORDER BY ngaydathang DESC LIMIT $limit";
+        return pdo_query($sql);
+    }
 ?>

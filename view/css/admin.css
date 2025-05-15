@@ -120,22 +120,17 @@
     background-color: #484848;
     color: #fff;
 }
-/*
-.form_dsloai table th:nth-child(2) { 
-    width: 30%;
+.form_dsloai1 table{
+    width: 50%;
+    border-collapse: collapse; 
+    border: 1px #1E1E2E solid;
+}
+.form_dsloai1 table th {
+
+    padding: 10px;
     background-color: #484848;
     color: #fff;
 }
-.form_dsloai table th:nth-child(3) {
-    width: 40%;
-    background-color: #484848;
-    color: #fff;
-}
-.form_dsloai table th:nth-child(4) {
-    width: 20%;
-    background-color: #484848;
-    color: #fff;
-} */
 
 /* === .form_dsloai td === */
 

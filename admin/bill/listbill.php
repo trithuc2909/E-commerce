@@ -6,7 +6,7 @@
         <!-- Font awsome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
         <form action="index.php?act=listbill" method="post">
-        <input type="text" name="keyword" id="searchbox" placeholder="Nhập mã đơn hàng">
+        <input type="text" name="keyword" id="searchbox" placeholder="Nhập mã đơn hàng" autocomplete="off">
                 <button type="submit" name="listok" id="timkiem" style="margin-top: 15px;">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>   

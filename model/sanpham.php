@@ -59,6 +59,11 @@ function loadOne_sanpham($id){
     
     return $sanpham;
 }
+// Lấy sản phẩm xem nhiều nhất
+function loadAll_sanpham_top_view($limit = 5) {
+    $sql = "SELECT name, view FROM sanpham ORDER BY view DESC LIMIT $limit";
+    return pdo_query($sql);
+}
 // Hàm load tên danh mục sản phẩm
 function load_ten_danhmuc($id){
     if($id > 0) {

@@ -401,14 +401,36 @@
                 $list_bill = loadAll_bill("",0);
                 include "bill/listbill.php";
                 break;
-        // Controller Thống kê
+            // Controller Thống kê
             case 'thongke':
                 
                 $list_thongke = loadAll_thongke();
                 include "thongke/list.php";
                 break;
+            case 'chart':
+                $list_thongke = loadAll_thongke();
 
+                include "thongke/chart.php";
+                break;
+            // Controller trang Home
+            case 'home':
+                // Sản phẩm mới nhất (lấy 1 hoặc nhiều bản ghi)
+                $sanpham_moinhat = loadOne_sanpham_moinhat(); // Hoặc loadAll_sanpham_moinhat(limit: 5)
+                
+                // Sản phẩm xem nhiều nhất (top view)
+                $sanpham_xemnhieu = loadAll_sanpham_top_view(limit: 5); 
+                
+                // Bình luận mới nhất
+                $binhluan_moinhat = loadAll_binhluan_moi(limit: 5);
+                
+                // Đơn hàng mới nhất
+                $donhang_moinhat = loadAll_donhang_moi(limit: 5);
+                
+                include "admin/home.php";
+                break;
+   
             default:
+
                 include "home.php";
                 break;
         }
