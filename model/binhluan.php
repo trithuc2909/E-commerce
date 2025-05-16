@@ -21,8 +21,8 @@
         pdo_execute($sql);
     }
     // Lấy bình luận mới nhất
-    function loadAll_binhluan_moi($limit = 5) {
-        $sql = "SELECT noidung, ngaybinhluan FROM binhluan ORDER BY ngaybinhluan DESC LIMIT $limit";
+    function loadAll_binhluan_moi() {
+        $sql = "SELECT iduser, idpro,noidung, ngaybinhluan FROM binhluan ORDER BY id ASC LIMIT 3";
         return pdo_query($sql);
     }
 ?>

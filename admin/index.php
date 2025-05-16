@@ -415,18 +415,20 @@
             // Controller trang Home
             case 'home':
                 // Sản phẩm mới nhất (lấy 1 hoặc nhiều bản ghi)
-                $sanpham_moinhat = loadOne_sanpham_moinhat(); // Hoặc loadAll_sanpham_moinhat(limit: 5)
+                $sanpham_moi = load_sanpham_moi(); // Hoặc loadAll_sanpham_moinhat(limit: 5)
                 
                 // Sản phẩm xem nhiều nhất (top view)
-                $sanpham_xemnhieu = loadAll_sanpham_top_view(limit: 5); 
+                $sanpham_top1_view = loadAll_sanpham_top_view(); 
                 
                 // Bình luận mới nhất
-                $binhluan_moinhat = loadAll_binhluan_moi(limit: 5);
+                $binhluan_moinhat = loadAll_binhluan_moi();
                 
-                // Đơn hàng mới nhất
-                $donhang_moinhat = loadAll_donhang_moi(limit: 5);
+                // Đơn hàng mới
+                $donhang_moi = loadAll_donhang_moi();
+                //Biểu đồ
+                $list_thongke = loadAll_thongke();
                 
-                include "admin/home.php";
+                include __DIR__ . '/home.php';  // Tự động lấy đúng đường dẫn
                 break;
    
             default:

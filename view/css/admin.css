@@ -122,11 +122,11 @@
 }
 .form_dsloai1 table{
     width: 50%;
+    border-radius: 5px;
     border-collapse: collapse; 
     border: 1px #1E1E2E solid;
 }
 .form_dsloai1 table th {
-
     padding: 10px;
     background-color: #484848;
     color: #fff;

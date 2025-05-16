@@ -40,6 +40,60 @@
                         </div>     
                     </div>
                 </div>
+                <script>
+                    let slideIndex = 1;
+                    let timer;
+
+                    // Khởi tạo slideshow
+                    showSlides(slideIndex);
+
+                    // Auto change slides
+                    startTimer();
+
+                    // Next/previous controls
+                    function plusSlides(n) {
+                    clearTimeout(timer); // Dừng timer hiện tại
+                    showSlides(slideIndex += n);
+                    startTimer(); // Khởi động lại timer
+                    }
+
+                    // Thumbnail image controls
+                    function currentSlide(n) {
+                    clearTimeout(timer);
+                    showSlides(slideIndex = n);
+                    startTimer();
+                    }
+
+                    function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                    
+                    if (n > slides.length) {slideIndex = 1}
+                    if (n < 1) {slideIndex = slides.length}
+                    
+                    // Ẩn tất cả slides
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    
+                    // Xóa active khỏi tất cả dots
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    
+                    // Hiển thị slide hiện tại và active dot tương ứng
+                    slides[slideIndex-1].style.display = "block";
+                    dots[slideIndex-1].className += " active";
+                    }
+
+                    function startTimer() {
+                    // Tự động chuyển slide mỗi 5 giây
+                    timer = setTimeout(() => {
+                        plusSlides(1);
+                    }, 5000);
+                    }
+                    </script>
                 <div class="row">
 
                     <?php

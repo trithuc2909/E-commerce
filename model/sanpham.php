@@ -59,11 +59,7 @@ function loadOne_sanpham($id){
     
     return $sanpham;
 }
-// Lấy sản phẩm xem nhiều nhất
-function loadAll_sanpham_top_view($limit = 5) {
-    $sql = "SELECT name, view FROM sanpham ORDER BY view DESC LIMIT $limit";
-    return pdo_query($sql);
-}
+
 // Hàm load tên danh mục sản phẩm
 function load_ten_danhmuc($id){
     if($id > 0) {
@@ -145,6 +141,14 @@ function load_sanpham($keyword = "") {
     $dssanpham = pdo_query($sql);
     return $dssanpham;
 }
-
-
+// Hàm lấy danh sách sản phẩm mới
+function load_sanpham_moi() {
+    $sql = "SELECT id, name, price, img FROM sanpham ORDER BY id DESC LIMIT 1";
+    return pdo_query($sql);
+}
+// Lấy sản phẩm xem nhiều nhất
+function loadAll_sanpham_top_view() {
+    $sql = "SELECT id, name, price,img, view FROM sanpham ORDER BY view DESC LIMIT 1";
+    return pdo_query($sql);
+}
 ?>

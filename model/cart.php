@@ -169,8 +169,8 @@
         pdo_execute($sql);
     }
     // Lấy đơn hàng mới nhất
-    function loadAll_donhang_moi($limit = 5) {
-        $sql = "SELECT bill_name, ngaydathang FROM bill ORDER BY ngaydathang DESC LIMIT $limit";
+    function loadAll_donhang_moi() {
+        $sql = "SELECT bill_name, bill_address, bill_tel,bill_status, ngaydathang FROM bill ORDER BY ngaydathang DESC LIMIT 1";
         return pdo_query($sql);
     }
 ?>
