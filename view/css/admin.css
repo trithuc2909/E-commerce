@@ -138,3 +138,26 @@
     padding: 10px 20px;
     border: 1px #CCC solid;
 }
+
+.thoikb h1 {
+    color: #e31837;
+    text-align: center;
+}
+.form_dsloai2 table{
+    width: 100%;
+    border-radius: 5px;
+    border-collapse: collapse; 
+    border: 1px #1E1E2E solid;
+}
+.form_dsloai2 table th {
+    padding: 10px;
+    background-color: #484848;
+    color: #fff;
+}
+
+.form_dsloai2 table td{
+    width: 15%;
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px #CCC solid;
+}

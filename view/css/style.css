@@ -31,6 +31,9 @@
 .mr {
     margin-right: 2%;
 }
+.mr5 {
+    margin-right: 5%;
+}
 .ml {
     margin-right: 2%;
 }
@@ -601,3 +604,147 @@
 
 
 /* Danh sách đơn hàng */
+
+
+
+/* === Contact ===  */
+.lien_he h1{
+    font-size: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+.lien_he p{
+    text-align: center;
+}
+
+
+.boxnoidung-contact {
+    background-color: rgb(255, 240, 229);
+    border: 0;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    min-height: 200px;
+    padding: 20px;
+}
+.contact-search {
+    display: flex;
+    justify-content: center;  
+    align-items: center;   
+}
+.contact-search input[type=search]{
+    box-sizing: border-box;
+    color: #666;
+    height: 40px;
+    width: 50%;  
+    background-color: #fff;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 10px 10px 35px;
+}
+.contact-search .search-icon {
+  position: relative;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+}
+
+.box-lienhe { 
+    border-radius: 5px;
+    float: left;
+    width: 30%;
+    min-height: 200px;
+    border: 1px #484848 solid;
+    margin-bottom: 24.5px;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+}
+.gridicon-circle {
+    width: 70px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+}
+.gridicon-circle .user_icon_circle {
+    color: #e31837;
+    font-size: 40px;
+}
+.gridicon-circle .user_icon_circle:hover {
+    transform: translateY(-4px);
+    cursor: pointer;
+}
+.text-account {
+    color: #2E2E2E;
+    font-size: larger;
+    font-weight: bold;
+    margin: 1rem; 
+    text-align: center;
+}
+.text-p-details {
+    color: #DA001C !important;
+    font-size: small !important;
+    font-weight: bold;
+    margin: 1rem; 
+    text-align: center;
+}
+.lien_he-grid {
+    display: grid;
+    gap: 20px;
+    text-align: center;
+}
+
+.home-title {
+    font-size: 22px;
+}
+.home-title2 {
+    color: #2F3941;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.boxnoidung-info {
+    gap: 10px;
+    width: 100%;
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    height: 202.5px;
+    padding: 30px;
+}
+.contact-box {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.contact-box .btn-gopy{
+    background-color: rgba(218, 0, 28, 1);
+    border: 1px solid rgba(218, 0, 28, 1);
+    border-radius: 20px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 2.34;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center;
+    
+}
+
+.contact-box  .btn-gopy:hover {
+    background-color: #74000f;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
